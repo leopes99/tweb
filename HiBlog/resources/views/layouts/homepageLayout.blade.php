@@ -24,7 +24,9 @@
             
             <div id="page">                
                     <div id="home">
-                        @yield('homepage') 
+                        @yield('homepage')
+                        @yield('login')
+                        @yield('register')
          
                     </div>                
             </div>
