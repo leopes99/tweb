@@ -31,7 +31,7 @@
                                   <!-- FINE PULSANTI NAVBAR -->
                               </ul>
                                   <!-- PULSANTE AUTENTICAZIONE -->  
-                              <div class="sign_btn"><a href="#">Accedi</a></div>
+                              <div class="sign_btn"><a href="{{route('login')}}">Accedi</a></div>
                            </div>
                         </nav>
                      </div>

@@ -19,3 +19,8 @@
  Route::get('login', 'Auth\LoginController@showLoginForm') ->name('login');
  
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register'); 
+ 
+ // ROUTES LIVELLO 2 (UTENTE)
+ 
+ Route::get('profile', 'PublicController@viewProfile')->name('profile'); 
+ Route::get('profileEdit', 'PublicController@viewProfileEdit')->name('profileEdit'); 

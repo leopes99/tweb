@@ -27,6 +27,8 @@
                         @yield('homepage')
                         @yield('login')
                         @yield('register')
+                        @yield('profile')
+                        @yield('profileEdit')
          
                     </div>                
             </div>
