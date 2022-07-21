@@ -15,3 +15,7 @@
 
 
  Route::get('/','PublicController@viewHome' ) -> name('homelvl1');
+ 
+ Route::get('login', 'Auth\LoginController@showLoginForm') ->name('login');
+ 
+ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register'); 
