@@ -13,8 +13,46 @@ class DatabaseSeeder extends Seeder {
 
     public function run() {
 
-        DB::table('category')->insert([
-            ['catId' => 1, 'name' => 'Computer', 'parId' => 0, 'desc' => 'Desktop, Laptop, Netbook'],  
+        DB::table('users')->insert([
+            [
+             'nome' => 'blog',
+             'cognome' => 'blog',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'telefono' => '3980901389',
+             'username' => 'blogblog',
+             'email' => 'blog@blog.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'utente',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+  
+            [
+             'nome' => 'staff',
+             'cognome' => 'staff',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'telefono' => '3981111111',
+             'username' => 'staffstaff',
+             'email' => 'staff@staff.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'staff',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+
+            [
+             'nome' => 'admin',
+             'cognome' => 'admin',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'telefono' => '3980901382',
+             'username' => 'adminadmin',
+             'email' => 'admin@admin.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'admin',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],            
+            
         ]);
 
         
