@@ -63,7 +63,17 @@ a {
     color:white;
 }
 
+.inside-banner{background:url(../images/bginside.jpg) #222;color: #fff; padding: 30px 0;}
+.inside-banner h2{margin: 0; color: #fff;}
+.inside-banner span{margin-top: 10px;}
 
+#pulsante{border: 4px solid #B1D8FF; border-radius: 11px; font-size:15px; background-color:#63B1FF;}
+#pulsante:hover{font-size:17px;}
+
+.login .form-group input{padding: 10px; height: 50px;}
+.login button,.register button,.contact button{width: 100%;border-radius: 5px;}
+
+#errore{color:red;  }
 
 h1,
 h2,

@@ -18,9 +18,14 @@
  
  Route::get('login', 'Auth\LoginController@showLoginForm') ->name('login');
  
+ Route::post('login', 'Auth\LoginController@login');
+ 
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register'); 
+ 
+  Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
  
  // ROUTES LIVELLO 2 (UTENTE)
  
- Route::get('profile', 'PublicController@viewProfile')->name('profile'); 
+ Route::get('profile', 'PublicController@viewProfile')->name('profile');
+ 
  Route::get('profileEdit', 'PublicController@viewProfileEdit')->name('profileEdit'); 
