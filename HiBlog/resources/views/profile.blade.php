@@ -25,40 +25,40 @@
                                                 <center>
                                                     <div class="d-none d-md-block col-md-9">
                                                         <div class="d-flex align-items-center justify-content-between">
-                                                            <h3 class="h2 mr-auto">provausername
-                                                                    @can('isUtente')<a href="#" style="font-size:16px;">&nbsp;Modifica il profilo</a>@endcan</h3>
+                                                            <h3 class="h2 mr-auto">{{Auth::user()->username}}
+                                                                    @can('isUtente')<a href="{{ route('profileEdit') }}" style="font-size:16px;">&nbsp;Modifica il profilo</a>@endcan</h3>
                                                         </div>
                                                         <div class="account-info">
                                                             <div class="row py-2">
                                                                 <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Nome</div>
-                                                                <div class="col-12 col-md-8 col-xl-9 dd"><span>provanome</span></div>
+                                                                <div class="col-12 col-md-8 col-xl-9 dd"><span>{{Auth::user()->nome}}</span></div>
                                                             </div>
                                                             <hr>
                                                             <div class="row py-2">
                                                                 <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Cognome</div>
-                                                                <div class="col-12 col-md-8 col-xl-9 dd"><span>provacognome</span></div>
+                                                                <div class="col-12 col-md-8 col-xl-9 dd"><span>{{Auth::user()->cognome}}</span></div>
                                                             </div>
                                                             <hr>
                                                             <div class="row py-2">
-                                                                <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Genere</div>
-                                                                <div class="col-12 col-md-8 col-xl-9 dd">provadata</div>
+                                                                <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Data di nascita</div>
+                                                                <div class="col-12 col-md-8 col-xl-9 dd">{{Auth::user()->data_nascita}}</div>
                                                             </div>
                                                             <hr>
                                                                 <div class="row py-2">
-                                                                    <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Data di nascita</div>
-                                                                    <div class="col-12 col-md-8 col-xl-9 dd">provagenere</div>
+                                                                    <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Genere</div>
+                                                                    <div class="col-12 col-md-8 col-xl-9 dd">{{Auth::user()->genere}}</div>
 
                                                                 </div>
                                                                 <hr>
 
                                                                 <div class="row py-2">
                                                                     <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Email</div>
-                                                                    <div class="col-12 col-md-8 col-xl-9 dd">provaemail</div>
+                                                                    <div class="col-12 col-md-8 col-xl-9 dd">{{Auth::user()->email}}</div>
                                                                 </div>
                                                                 <hr>
                                                                 <div class="row py-2">
                                                                     <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Numero</div>
-                                                                    <div class="col-12 col-md-8 col-xl-9 dd">+39&nbsp;provanumero</div>
+                                                                    <div class="col-12 col-md-8 col-xl-9 dd">+39&nbsp;{{Auth::user()->telefono}}</div>
                                                                 </div>
                                                         </div>
 

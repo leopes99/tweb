@@ -149,7 +149,7 @@
                               <img src="{{ URL('images/icon/calendario.png') }}" alt="Calendar Image" />
                             </div>
                           </div>
-                          {{ Form::date('datanascita','',['class' => 'input', 'id' => 'datanascita', 'style' => 'width:250px']) }}
+                          {{ Form::date('datanascita','',['class' => 'input', 'id' => 'datanascita', 'style' => 'width:250px', 'min'=>"1900-01-01", 'max'=>"2004-01-01"]) }}
                                 @if ($errors->first('datanascita'))
                                 <ul id="errore">
                                     @foreach ($errors->get('datanascita') as $message)
