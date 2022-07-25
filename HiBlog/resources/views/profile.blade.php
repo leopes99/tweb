@@ -1,9 +1,18 @@
 @extends('layouts.homepageLayout')
-
+@section('title', 'Profilo utente')
 @section('profile')
 
+<!--  Titolo e breve descrizione della pagina -->
+<div class="inside-banner">
+    <div class="container"> 
+        <span class="pull-right"></span>
+        <h2>Profilo</h2>
+    </div>
+</div>
+<div class="container"> <br>    
+    <h4>In questa pagina puoi visualizzare i tuoi dati utente. </h4>
 <section class="find_section layout_padding">
-    <div class="container">
+    
         <div class="row">
             <div class="col-md-10 mx-auto">
                 <div class="form_tab_container">
@@ -17,7 +26,7 @@
                                                     <div class="d-none d-md-block col-md-9">
                                                         <div class="d-flex align-items-center justify-content-between">
                                                             <h3 class="h2 mr-auto">provausername
-                                                                    <a href="#" style="font-size:16px;">&nbsp;Modifica il profilo</a></h3>
+                                                                    @can('isUtente')<a href="#" style="font-size:16px;">&nbsp;Modifica il profilo</a>@endcan</h3>
                                                         </div>
                                                         <div class="account-info">
                                                             <div class="row py-2">
@@ -75,4 +84,5 @@
                            @endauth
                            <!-- <button type="submit" class="btn btn-primary" name="Submit">Logout</button>-->
                         </div>
+
 @endsection

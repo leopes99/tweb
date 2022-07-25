@@ -1,9 +1,19 @@
 @extends('layouts.homepageLayout')
-
+@section('title', 'Modifica profilo')
 @section('profileEdit')
 
 <!-- edit section starts -->
-
+<!--  Titolo e breve descrizione della pagina -->
+<div class="inside-banner">
+    <div class="container"> 
+        <span class="pull-right"></span>
+        <h2>Modifica profilo</h2>
+    </div>
+</div>
+ <br>    
+    <h4>In questa sezione puoi modificare i tuoi dati personali. Raccomandiamo di camibare la password ogni mese
+    per maggiore sicurezza.</h4>
+    
   <section class="find_section layout_padding">
     <div class="container">
       <div class="row">
