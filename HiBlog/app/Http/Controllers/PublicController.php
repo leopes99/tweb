@@ -15,12 +15,6 @@ class PublicController extends Controller {
       return view('auth.login');
     }
     
-    public function viewProfile() {
-        return view('profile');
-    }
-    
-    public function viewProfileEdit() {
-        return view('profileEdit');
-    }
+
 
 }

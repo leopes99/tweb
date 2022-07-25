@@ -25,9 +25,19 @@
   Route::post('register', 'Auth\RegisterController@register');
  
   Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
+
+
+ // ROUTES In comune tra utenti loggati
+
+ Route::get('profile', 'UserController@index') -> name('profile');
  
- // ROUTES LIVELLO 2 (UTENTE)
  
- Route::get('profile', 'PublicController@viewProfile')->name('profile');
+  // ROUTES LIVELLO 2 (UTENTE)
  
- Route::get('profileEdit', 'PublicController@viewProfileEdit')->name('profileEdit'); 
+  Route::get('profileEdit', 'UserController@viewProfileEdit')->name('profileEdit'); 
+  
+  
+  
+  // ROUTES LIVELLO 3 (STAFF)
+  
+  // ROUTES LIVELLO 4 (ADMIN)

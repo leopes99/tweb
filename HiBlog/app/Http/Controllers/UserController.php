@@ -9,8 +9,10 @@ class userController extends Controller {
     }
 
     public function index() {
-        return view('user');
+        return view('profile');
     }
     
-
+    public function viewProfileEdit() {
+        return view('profileEdit');
+    }
 }
