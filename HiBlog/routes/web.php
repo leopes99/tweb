@@ -22,6 +22,8 @@
  
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register'); 
  
+  Route::post('register', 'Auth\RegisterController@register');
+ 
   Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
  
  // ROUTES LIVELLO 2 (UTENTE)

@@ -29,8 +29,19 @@ class RegisterController extends Controller
      * @var string
      */
     
-    //protected $redirectTo = '/home';
-    protected $redirectTo = '/';
+
+        protected function redirectTo() {        
+        $role = auth()->user()->role;
+        switch ($role) {
+            case 'admin': return '/profile';
+                break;
+            case 'staff': return '/profile';
+                break;
+            case 'utente': return '/profile';
+                break;
+            default: return '/';
+        };
+    }
 
     /**
      * Create a new controller instance.
@@ -48,14 +59,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'min:8', 'unique:users'],
+            'nome' => ['required', 'string', 'max:25'],
+            'cognome' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'min:6', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'datanascita' => ['required','date','before:today'],
+            'telefono' => ['required', 'numeric', 'digits_between:8,11'],
+            'role' => ['required','string'],
+  
         ]);
     }
 
@@ -65,14 +80,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+        protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'email' => $data['email'],
+            'nome' => $data['nome'],
+            'cognome' => $data['cognome'],
             'username' => $data['username'],
-            'password' => Hash::make($data['password']),
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'data_nascita'=> $data['datanascita'],
+            'telefono' => $data['telefono'],
+            'genere'=> $data['genere'],
+            'role' => $data['role'],
+            
+            
         ]);
     }
+    
 }
