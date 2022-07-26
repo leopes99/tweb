@@ -36,7 +36,7 @@
  
   Route::get('profileEdit', 'UserController@viewProfileEdit')->name('profileEdit'); 
   
-  
+  Route::post('profileEdit', 'UserController@EditUtente')->name('editutente');
   
   // ROUTES LIVELLO 3 (STAFF)
   

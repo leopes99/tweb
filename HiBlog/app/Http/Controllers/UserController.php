@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ModificaProfiloRequest;
+use Auth;
 
 class userController extends Controller {
 
@@ -15,4 +17,18 @@ class userController extends Controller {
     public function viewProfileEdit() {
         return view('profileEdit');
     }
+    
+    public function EditUtente(ModificaProfiloRequest $request){
+       
+       $result = collect(request()->all())->filter(function($request){
+            return is_string($request)&&!empty($request)||is_array($request)&&count($request);
+        });
+        
+        $user=Auth::user();        
+        $user->update($result->all());
+        
+        return redirect()->action('UserController@index');
+            
+    }   
+    
 }

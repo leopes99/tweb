@@ -63,9 +63,9 @@ protected function validator(array $data)
     {
         return Validator::make($data, [
             'nome' => ['required', 'string', 'max:25'],
-            'cognome' => ['required', 'string', 'max:255'],
+            'cognome' => ['required', 'string', 'max:25'],
             'username' => ['required', 'string', 'min:6', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 
+            'email' => ['required', 'string', 'email', 'max:40', 'unique:users'], 
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'datanascita' => ['required','date','before:today'],
             'telefono' => ['required', 'numeric', 'digits_between:8,11'],
