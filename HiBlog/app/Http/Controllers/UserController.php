@@ -35,4 +35,8 @@ class userController extends Controller {
         return view('amici');
     }
     
+    public function viewRicercaAmici() {
+        return view('ricerca');
+    }
+    
 }

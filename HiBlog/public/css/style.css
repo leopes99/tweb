@@ -75,6 +75,14 @@ a {
 
 #errore{color:red;  }
 
+#pulsante2{-webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 4px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 4px 5px 15px 5px rgba(0,0,0,0); width:200px;
+height:50px;background-color:#1CA6DC;margin-bottom:40px;margin-top:10px;}
+#linkpulsante{color:white;font-size:16px;}
+#pulsante2:hover{width:205px; height:53px;font-weight:bold;}
+
+.barraricerca{width:350px;height:35px;background-color:#90C7FF;color:white;}
+
 h1,
 h2,
 h3,

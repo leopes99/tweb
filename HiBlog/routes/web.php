@@ -39,7 +39,15 @@
   Route::post('profileEdit', 'UserController@EditUtente')->name('editutente');
   
    Route::get('amici', 'UserController@viewAmici')->name('amici'); 
-  
+   
+   Route::get('ricerca', 'UserController@viewRicercaAmici')->name('viewRicerca'); 
+   
+
+                                                       
+   //ROTTA PER LA RICERCA EFFETTIVA 
+   
+   //Route::post('ricerca', 'UserController@RicercaAmici')->name('ricerca');
+   
   // ROUTES LIVELLO 3 (STAFF)
   
   // ROUTES LIVELLO 4 (ADMIN)
