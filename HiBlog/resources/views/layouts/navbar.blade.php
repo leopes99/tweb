@@ -30,7 +30,7 @@
                                         <a class="nav-link" href="{{route('homelvl1')}}">Home</a>
                                     </li>
                                     @can('isUtente')
-                                        <a class="nav-link" href="#">Amici</a>
+                                        <a class="nav-link" href="{{route('amici')}}">Amici</a>
                                         <a class="nav-link" href="#">Blog</a>
                                         <a class="nav-link" href="#">Notifiche</a>
                                     @endcan

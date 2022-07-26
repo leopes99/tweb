@@ -31,4 +31,8 @@ class userController extends Controller {
             
     }   
     
+        public function viewAmici() {
+        return view('amici');
+    }
+    
 }

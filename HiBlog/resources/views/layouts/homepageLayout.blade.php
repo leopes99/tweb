@@ -29,6 +29,7 @@
                         @yield('register')
                         @yield('profile')
                         @yield('profileEdit')
+                        @yield('amici')
          
                     </div>                
             </div>

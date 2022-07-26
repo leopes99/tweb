@@ -38,6 +38,8 @@
   
   Route::post('profileEdit', 'UserController@EditUtente')->name('editutente');
   
+   Route::get('amici', 'UserController@viewAmici')->name('amici'); 
+  
   // ROUTES LIVELLO 3 (STAFF)
   
   // ROUTES LIVELLO 4 (ADMIN)
