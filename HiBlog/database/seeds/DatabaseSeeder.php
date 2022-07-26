@@ -53,8 +53,76 @@ class DatabaseSeeder extends Seeder {
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],            
             
+            [
+             'nome' => 'mario',
+             'cognome' => 'rossi',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'telefono' => '3980901180',
+             'username' => 'prova1',
+             'email' => 'mario@rossi.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'utente',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+             'nome' => 'luigi',
+             'cognome' => 'verdi',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'telefono' => '3980901181',
+             'username' => 'prova2',
+             'email' => 'luigi@verdi.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'utente',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+             'nome' => 'Laura',
+             'cognome' => 'Bianchi',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'femmina',
+             'telefono' => '3980901182',
+             'username' => 'prova3',
+             'email' => 'laura@bianchi.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'utente',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+             'nome' => 'luca',
+             'cognome' => 'Bianchi',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'telefono' => '3980901183',
+             'username' => 'prova4',
+             'email' => 'luca@bianchi.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'utente',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
         ]);
 
+        DB::table('amicizie')->insert([
+            [
+            'id_richiedente_amicizia' => '1',
+            'id_ricevente_amicizia' => '4',
+            'accettata' => '1',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+            'id_richiedente_amicizia' => '1',
+            'id_ricevente_amicizia' => '6',
+            'accettata' => '1',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")],
+            
+            
+        ]);
         
     }
 
