@@ -31,6 +31,7 @@
                         @yield('profileEdit')
                         @yield('amici')
                         @yield('ricerca')
+                        @yield('profileOther')
          
                     </div>                
             </div>

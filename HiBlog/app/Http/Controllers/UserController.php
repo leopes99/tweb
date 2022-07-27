@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\ModificaProfiloRequest;
+use Illuminate\Support\Facades\DB;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class userController extends Controller {
 
@@ -36,12 +38,37 @@ class userController extends Controller {
             
     }   
     
-        public function viewAmici() {
-        return view('amici');
+    public function viewAmici(Request $request) {
+        $query1 = "select id_ricevente_amicizia from amicizie where accettata='1' and id_richiedente_amicizia='" . $request->id . "'";
+        $query2 = "select id_richiedente_amicizia from amicizie where accettata='1' and id_ricevente_amicizia='" . $request->id . "'";
+
+        $idamici1 = DB::select($query1);
+        foreach ($idamici1 as $idamico) {
+            $idamici[] = $idamico->id_ricevente_amicizia;
+        }
+
+        $idamici2 = DB::select($query2);
+        foreach ($idamici2 as $idamico) {
+            $idamici[] = $idamico->id_richiedente_amicizia;
+        }
+
+        foreach ($idamici as $idamico) {
+            $query = "select * from users where id='$idamico'";
+            $amici[] = DB::select($query);
+        }
+
+        $numero_amici = count($amici);
+        return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
     }
-    
+
     public function viewRicercaAmici() {
         return view('ricerca');
+    }
+    
+    public function viewProfileOther(Request $request) {
+        $query = "select * from users where id='".$request->id."'";
+        $utente = DB::select($query);
+        return view('profileOther', ['utente' => $utente]);
     }
     
 }
