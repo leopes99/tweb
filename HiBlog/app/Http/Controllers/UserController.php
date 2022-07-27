@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\ModificaProfiloRequest;
 use Auth;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller {
 
@@ -19,8 +21,9 @@ class userController extends Controller {
     }
     
     public function EditUtente(ModificaProfiloRequest $request){
-       
-       $result = collect(request()->all())->filter(function($request){
+       $utente = User::find(Auth::user()->id);
+       if(Hash::check($request->password_attuale, $utente->password)){
+        $result = collect(request()->all())->filter(function($request){
             return is_string($request)&&!empty($request)||is_array($request)&&count($request);
         });
         
@@ -28,6 +31,8 @@ class userController extends Controller {
         $user->update($result->all());
         
         return redirect()->action('UserController@index');
+        }else{
+        return back()->with('errore', 'Password errata!');}
             
     }   
     

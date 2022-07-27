@@ -10,7 +10,8 @@
         <h2>Modifica profilo</h2>
     </div>
 </div>
- <br>    
+ <br>  
+  <div class="container"> 
     <h4>In questa sezione puoi modificare i tuoi dati personali. Raccomandiamo di camibare la password ogni mese
     per maggiore sicurezza.</h4>
     
@@ -159,10 +160,7 @@
                         </div>
                       </div>
                     </div>
-                    
-                  </div>
-                  <center>
-                     <!-- Telefono-->
+                    <!-- Telefono-->
                       <div class="col-md-6 px-0">
                         <div class="form-group ">
                           <div class="input-group ">
@@ -181,10 +179,32 @@
                             @endif
                           </div>
                         </div>
+                      </div>  
+                  </div>
+                <hr>
+                  <center>
+                    <div class="col-md-6 px-0">
+                      <div class="form-group ">
+                        <div class="input-group ">
+                          <div class="input-group-prepend" >
+                            <div class="input-group-text" style="background-color:#B1D8FF">
+                              <img src="{{ URL('images/icon/pass.png') }}" alt="Password image"/>
+                            </div>
+                          </div>
+                        {{ Form::password('password_attuale', ['class' => 'input', 'id' => 'password_attuale','placeholder' => 'Password attuale' , 'style' => 'width:350px', 'required']) }}
+                        @if ($message = Session::get('errore'))
+                        <ul id="errore">
+                            <strong>{{ $message }}</strong>
+                        </ul>
+                        @endif
+                        
+                        </div>
                       </div>
-                    </center>
+                    </div>
+                  </center>
                 <center>
-                    {{ Form::submit('Salva', ['class' => 'form-btn1', 'id'=>"pulsante"]) }}
+                    
+                    {{ Form::submit('Salva', ['class' => 'form-btn1', 'id'=>"pulsante", 'onclick' => 'return confirm("Sicuro di voler modificare i dati?")']) }}
                 </center>
                 
             </div>
@@ -192,8 +212,10 @@
         </div>
       </div>
     </div>
-  </div>
+  
 </section>
+  
+</div>
 <!-- profileEdit section ends -->
 
 @endsection
