@@ -51,14 +51,22 @@ class userController extends Controller {
         foreach ($idamici2 as $idamico) {
             $idamici[] = $idamico->id_richiedente_amicizia;
         }
-
-        foreach ($idamici as $idamico) {
-            $query = "select * from users where id='$idamico'";
-            $amici[] = DB::select($query);
+        if(!empty($idamici)){
+            foreach ($idamici as $idamico) {
+                $query = "select * from users where id='$idamico'";
+                $amici[] = DB::select($query);
+            }
+            $numero_amici = count($amici);
+            #echo '<pre>'; print_r($amici); echo '</pre>';
+            return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
+        }else{
+            return view('amici', ['amici' => ""]);
         }
+        
 
         $numero_amici = count($amici);
-        return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
+        echo '<pre>'; print_r($amici); echo '</pre>';
+        #return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
     }
 
     public function viewRicercaAmici() {

@@ -14,7 +14,9 @@
     
     <center><button id="pulsante2" ><a href="{{route('viewRicerca')}}" id="linkpulsante">Cerca nuove amicizie</a></button></center>
     <center>
+     @if(!empty($numero_amici))
         <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt"> Elenco amici({{$numero_amici}}): </div>
+     @endif
      @if(!empty($amici))
         @foreach ($amici as $amico)
         <a class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt" href="{{ route('profileOther',['id'=>$amico[0]->id]) }}">{{ $amico[0]->nome }} {{ $amico[0]->cognome }} 
