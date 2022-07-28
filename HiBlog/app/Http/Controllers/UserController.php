@@ -7,6 +7,10 @@ use Auth;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Constraint\StringContains;
+use App\Models\Utenti;
+use Hamcrest\Text\StringContainsIgnoringCase;
+use App\Http\Requests\RicercaAmicoRequest;
 
 class userController extends Controller {
 
@@ -79,4 +83,38 @@ class userController extends Controller {
         return view('profileOther', ['utente' => $utente]);
     }
     
+    public function RicercaAmici(RicercaAmicoRequest $request) {
+        // $params[] = collect($request->except('_token'));
+        $params = $request->cercaAmici;
+
+        $query = "SELECT * FROM users";
+
+        $TabellaUtenti = DB::select($query);
+
+        foreach ($TabellaUtenti as $utenti) {
+            $unite = $utenti->nome . " " . $utenti->cognome;
+
+            if (strpos($utenti->nome, $params) !== false) {
+
+                $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                $risultati[] = DB::select($query2);
+            } else if (strpos($utenti->cognome, $params) !== false) {
+
+                $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                $risultati[] = DB::select($query2);
+            } else if ((strpos($unite, $params) !== false)) {
+                $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                $risultati[] = DB::select($query2);
+            }
+        }
+        if (!empty($risultati))
+            return view('ricerca')->with('friends', $risultati);
+        else
+            return view('ricerca')->with('friends', "");
+    }
+
 }
+
