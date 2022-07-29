@@ -2,6 +2,8 @@
 @section('title', 'Cerca amici')
 @section('ricerca')
 
+
+
 <!--  Titolo e breve descrizione della pagina -->
 <div class="inside-banner">
     <div class="container"> 
@@ -15,20 +17,39 @@
     <br>
     
     <center>
-        {{ Form::open(array('route' => 'viewRicerca', 'class' => 'contact-form')) }}
-            {{ Form::text('nome', '', ['class' => 'barraricerca', 'id' => 'nome', 'placeholder'=>'Nome e/o Cognome' ]) }}
-            {{ Form::submit('Cerca', ['class' => 'form-btn1', 'id'=>"pulsante"]) }}
+        {{ Form::open(array('route' => 'ricerca', 'class' => 'contact-form')) }}
+            {{ Form::text('cercaAmici', '', ['class' => 'barraricerca', 'id' => 'cercaAmici', 'placeholder'=>'Nome e/o Cognome' ]) }}
+                    
+                    @if ($errors->first('cercaAmici'))
+                    <ul id="errore">
+                        @foreach ($errors->get('cercaAmici') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                    
+            {{ Form::submit('Cerca', ['class' => 'form-btn1', 'id'=>"pulsanteRicerca"]) }}
         {{ Form::close() }}
     </center>
+ 
     <br>
     
     <p>Risultati:</p>
-    <ul style="list-style-type:circle">
-        <li>Thomas Turbato</li>
-        <li>Gustavo LaMazza</li>
-        <li>Andrey Koymasky</li>
-    </ul>
-    
+
+   
+               
+             @if(empty($friends))
+                            <h3>"Nessun risultato trovato."</h3>
+                            @else
+             @isset($friends)
+            @foreach ($friends as $friend)
+        <ul style="list-style-type:circle" id="risulatiRicerca">
+            <li>- {{$friend[0]->nome}} {{$friend[0]->cognome}}</li>
+
+        </ul>
+            @endforeach  
+        @endisset()
+        @endif
 </div>  
 
 @endsection

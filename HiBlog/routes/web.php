@@ -42,6 +42,8 @@
    
    Route::get('ricerca', 'UserController@viewRicercaAmici')->name('viewRicerca'); 
    
+   Route::post('ricerca', 'UserController@RicercaAmici')->name('ricerca');
+   
    Route::get('profileOther/{id}', 'UserController@viewProfileOther')->name('profileOther');
    
 
