@@ -86,6 +86,69 @@ height:50px;background-color:#1CA6DC;margin-bottom:40px;margin-top:10px;}
 #pulsanteRicerca{border: 4px solid #B1D8FF; border-radius: 11px; font-size:15px; background-color:#63B1FF;}
 #pulsanteRicerca:hover{font-size:17px;}
 
+/*PULSANTE MODIFICA DEL PROFILO */
+#PulsanteModProf{
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 250px;
+}
+
+#PulsanteModProf:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+#PulsanteModProf:main,
+#PulsanteModProf:focus {
+  user-select: auto;
+}
+
+#PulsanteModProf:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+#PulsanteModProf:disabled {
+  cursor: auto;
+}
+/* FINE PULSANTE MODIFICA DEL PROFILO */
+
+
 h1,
 h2,
 h3,

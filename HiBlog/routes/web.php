@@ -38,13 +38,13 @@
   
   Route::post('profileEdit', 'UserController@EditUtente')->name('editutente');
   
-   Route::get('amici/{id}', 'UserController@viewAmici')->name('amici'); 
+   Route::get('amici', 'UserController@viewAmici')->name('amici'); 
    
    Route::get('ricerca', 'UserController@viewRicercaAmici')->name('viewRicerca'); 
    
    Route::post('ricerca', 'UserController@RicercaAmici')->name('ricerca');
    
-   Route::get('profileOther/{id}', 'UserController@viewProfileOther')->name('profileOther');
+   Route::get('profileOther', 'UserController@viewProfileOther')->name('profileOther');
    
 
                                                        

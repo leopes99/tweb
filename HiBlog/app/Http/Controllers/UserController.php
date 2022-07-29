@@ -83,30 +83,63 @@ class userController extends Controller {
         return view('profileOther', ['utente' => $utente]);
     }
     
-    public function RicercaAmici(RicercaAmicoRequest $request){
-       // $params[] = collect($request->except('_token'));
-          $params=$request->cercaAmici;
-          
-          
-          $query = "SELECT * FROM users";
-          
-          $TabellaUtenti=DB::select($query);
+    public function RicercaAmici(RicercaAmicoRequest $request) {
+        // $params[] = collect($request->except('_token'));
+        $params = $request->cercaAmici;
+        $wildcard = "*";
+        $controllo1="**";$controllo2="***";$controllo3="****";
+        if($params==$wildcard||$params==$controllo1||$params==$controllo2||$params==$controllo3)return view('ricerca')->with('friends', "");
+        //$test= str_replace("*","",$params);
+        //echo '<pre>'; print_r($test); echo '</pre>';
 
-          foreach ($TabellaUtenti as $utenti) {
-            $unite= $utenti->nome." ".$utenti->cognome;
-            $unite2= $utenti->cognome." ".$utenti->nome;
-         if((strpos(strtolower($unite),strtolower($params)) !== false)||(strpos(strtolower($unite2),strtolower($params)) !== false)){
-                $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+        if (strpos($params, $wildcard) !== false) {
+            $params2 = str_replace("*", "", $params);
+            $query = "SELECT * FROM users";
 
-                $risultati[] = DB::select($query2);
+            $TabellaUtenti = DB::select($query);
+
+            foreach ($TabellaUtenti as $utenti) {
+                $unite = $utenti->nome . " " . $utenti->cognome;
+                $unite2 = $utenti->cognome . " " . $utenti->nome;
+                if ((strpos(strtolower($unite), strtolower($params2)) !== false) || (strpos(strtolower($unite2), strtolower($params2)) !== false)) {
+                    $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                    $risultati[] = DB::select($query2);
+                }
+            }
+        } else {
+
+            $query = "SELECT * FROM users";
+
+            $TabellaUtenti = DB::select($query);
+
+            foreach ($TabellaUtenti as $utenti) {
+                $unite = $utenti->nome . " " . $utenti->cognome;
+                $unite2 = $utenti->cognome . " " . $utenti->nome;
+
+                if (strtolower($utenti->nome) == strtolower($params)) {
+                    $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                    $risultati[] = DB::select($query2);
+                } else if (strtolower($utenti->cognome) == strtolower($params)) {
+                    $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                    $risultati[] = DB::select($query2);
+                } else if (strtolower($unite) == strtolower($params) || strtolower($unite2) == strtolower($params)) {
+                    $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                    $risultati[] = DB::select($query2);
+                }
+            }
         }
-          }
-        if(!empty($risultati))return view('ricerca')->with('friends', $risultati);
-          else return view('ricerca')->with('friends', "");
+        if (!empty($risultati))
+            return view('ricerca')->with('friends', $risultati);
+        else
+            return view('ricerca')->with('friends', "");
         //$variabile = $this->users->getFriends($params); 
         //echo '<pre>'; print_r($variabile); echo '</pre>';
-   
     }
 
 }
+
 

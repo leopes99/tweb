@@ -25,9 +25,9 @@
                                                 <center>
                                                     <div class="d-none d-md-block col-md-9">
                                                         <div class="d-flex align-items-center justify-content-between">
-                                                            <h3 class="h2 mr-auto">{{Auth::user()->username}}
-                                                                    @can('isUtente')<a href="{{ route('profileEdit') }}" style="font-size:16px;">&nbsp;Modifica il profilo</a>@endcan</h3>
-                                                        </div>
+                                                            <h3 class="h2 mr-auto">Ciao {{Auth::user()->username}} !</h3>
+                                                                    @can('isUtente')<a href="{{ route('profileEdit') }}" id="PulsanteModProf">&nbsp;Modifica il profilo</a>@endcan
+                                                        </div><br>
                                                         <div class="account-info">
                                                             <div class="row py-2">
                                                                 <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Nome</div>
@@ -75,14 +75,14 @@
 </section>
 
 
-                        <div class="col-lg-2 col-sm-2 col-lg-offset-0 col-sm-offset-3">
+                       <center> <div class="col-lg-2 col-sm-2 col-lg-offset-0 col-sm-offset-3">
                            @auth
-                                    <button title="Esci dal sito" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
+                           <button title="Esci dal sito" id="PulsanteModProf" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                            @endauth
                            <!-- <button type="submit" class="btn btn-primary" name="Submit">Logout</button>-->
-                        </div>
+                        </div></center><br>
 
 @endsection
