@@ -50,6 +50,7 @@ class userController extends Controller {
         foreach ($idamici1 as $idamico) {
             $idamici[] = $idamico->id_ricevente_amicizia;
         }
+
         $idamici2 = DB::select($query2);
         foreach ($idamici2 as $idamico) {
             $idamici[] = $idamico->id_richiedente_amicizia;
@@ -60,6 +61,7 @@ class userController extends Controller {
                 $amici[] = DB::select($query);
             }
             $numero_amici = count($amici);
+            #echo '<pre>'; print_r($amici); echo '</pre>';
             return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
         }else{
             return view('amici', ['amici' => ""]);
