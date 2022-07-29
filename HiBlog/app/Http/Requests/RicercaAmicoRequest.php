@@ -29,7 +29,7 @@ class RicercaAmicoRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'cercaAmici' =>  'string|max:30|nullable',
+            'cercaAmici' =>  'required|string|max:30',
         ];
     }
     

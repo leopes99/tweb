@@ -83,37 +83,29 @@ class userController extends Controller {
         return view('profileOther', ['utente' => $utente]);
     }
     
-    public function RicercaAmici(RicercaAmicoRequest $request) {
-        // $params[] = collect($request->except('_token'));
-        $params = $request->cercaAmici;
+    public function RicercaAmici(RicercaAmicoRequest $request){
+       // $params[] = collect($request->except('_token'));
+          $params=$request->cercaAmici;
+          
+          
+          $query = "SELECT * FROM users";
+          
+          $TabellaUtenti=DB::select($query);
 
-        $query = "SELECT * FROM users";
-
-        $TabellaUtenti = DB::select($query);
-
-        foreach ($TabellaUtenti as $utenti) {
-            $unite = $utenti->nome . " " . $utenti->cognome;
-
-            if (strpos($utenti->nome, $params) !== false) {
-
+          foreach ($TabellaUtenti as $utenti) {
+            $unite= $utenti->nome." ".$utenti->cognome;
+            $unite2= $utenti->cognome." ".$utenti->nome;
+         if((strpos(strtolower($unite),strtolower($params)) !== false)||(strpos(strtolower($unite2),strtolower($params)) !== false)){
                 $query2 = "SELECT * FROM users WHERE id = $utenti->id";
 
                 $risultati[] = DB::select($query2);
-            } else if (strpos($utenti->cognome, $params) !== false) {
-
-                $query2 = "SELECT * FROM users WHERE id = $utenti->id";
-
-                $risultati[] = DB::select($query2);
-            } else if ((strpos($unite, $params) !== false)) {
-                $query2 = "SELECT * FROM users WHERE id = $utenti->id";
-
-                $risultati[] = DB::select($query2);
-            }
         }
-        if (!empty($risultati))
-            return view('ricerca')->with('friends', $risultati);
-        else
-            return view('ricerca')->with('friends', "");
+          }
+        if(!empty($risultati))return view('ricerca')->with('friends', $risultati);
+          else return view('ricerca')->with('friends', "");
+        //$variabile = $this->users->getFriends($params); 
+        //echo '<pre>'; print_r($variabile); echo '</pre>';
+   
     }
 
 }
