@@ -25,7 +25,7 @@
                                             <center>
                                                 <div class="d-none d-md-block col-md-9">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <h3 class="h2 mr-auto">{{$utente[0]->username}}
+                                                        <h3 class="h2 mr-auto">{{$utente[0]->username}}</h3> <a href="#" id="pulsanteVediBlog" style="background-color:#00FF00;">Visualizza blog</a> <a href="#" id="pulsanteVediBlog">Rimuovi amico </a>
                                                     </div>
                                                     <div class="account-info">
                                                         <div class="row py-2">

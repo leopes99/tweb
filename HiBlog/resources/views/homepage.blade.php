@@ -55,7 +55,7 @@
                      <span></span>
                      <p>Questo sito è stato realizzato dagli studenti del gruppo 53 del corso di Tecnologie Web di Ingegneria
                       dell'informatica e dell'automazione, dell' Università Politecnica delle Marche. La documentaione 
-                      riguardo il progetto è disponibile <a href="" style="color:blue;">qui</a></p>
+                      riguardo il progetto è disponibile <a href="" style="color:blue;">qui.</a></p>
                      
                      
                   </div>
