@@ -34,7 +34,7 @@
  
     <br>
     
-    <p>Risultati:</p>
+    <h2 id="scritta-h2">Risultati:</h2>
 
    
                
@@ -43,13 +43,14 @@
                             @else
              @isset($friends)
             @foreach ($friends as $friend)
-        <ul style="list-style-type:circle" id="risulatiRicerca">
-            <li>- {{$friend[0]->nome}} {{$friend[0]->cognome}}</li>
+        <span id="elenco">
+            -<a href="#"> {{$friend[0]->nome}} {{$friend[0]->cognome}}</a> <br>
+        </span>
 
         </ul>
             @endforeach  
         @endisset()
         @endif
 </div>  
-
+<br>
 @endsection
