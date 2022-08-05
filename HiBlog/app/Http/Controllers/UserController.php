@@ -139,6 +139,12 @@ class userController extends Controller {
         //$variabile = $this->users->getFriends($params); 
         //echo '<pre>'; print_r($variabile); echo '</pre>';
     }
+    
+    public function viewProfileResult(Request $request) {
+        $query = "select * from users where id='".$request->id."'";
+        $utente = DB::select($query);
+        return view('profileResult', ['utente' => $utente]);
+    }
 
 }
 

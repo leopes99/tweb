@@ -46,6 +46,8 @@
    
    Route::get('profileOther', 'UserController@viewProfileOther')->name('profileOther');
    
+   Route::get('profileResult', 'UserController@viewProfileResult')->name('profileResult');
+   
 
                                                        
    //ROTTA PER LA RICERCA EFFETTIVA 
