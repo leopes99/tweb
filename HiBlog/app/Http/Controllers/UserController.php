@@ -43,34 +43,14 @@ class userController extends Controller {
     }   
     
     public function viewAmici(Request $request) {
-        $query1 = "select id_ricevente_amicizia from amicizie where accettata='1' and id_richiedente_amicizia='" . $request->id . "'";
-        $query2 = "select id_richiedente_amicizia from amicizie where accettata='1' and id_ricevente_amicizia='" . $request->id . "'";
-
-        $idamici1 = DB::select($query1);
-        foreach ($idamici1 as $idamico) {
-            $idamici[] = $idamico->id_ricevente_amicizia;
-        }
-
-        $idamici2 = DB::select($query2);
-        foreach ($idamici2 as $idamico) {
-            $idamici[] = $idamico->id_richiedente_amicizia;
-        }
-        if(!empty($idamici)){
-            foreach ($idamici as $idamico) {
-                $query = "select * from users where id='$idamico'";
-                $amici[] = DB::select($query);
-            }
+        $utenti = new Utenti;
+        $amici=$utenti->getAmici($request);
+        if(!empty($amici)){
             $numero_amici = count($amici);
-            #echo '<pre>'; print_r($amici); echo '</pre>';
             return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
         }else{
             return view('amici', ['amici' => ""]);
         }
-        
-
-        $numero_amici = count($amici);
-        echo '<pre>'; print_r($amici); echo '</pre>';
-        #return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
     }
 
     public function viewRicercaAmici() {
