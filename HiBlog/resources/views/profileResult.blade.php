@@ -30,7 +30,7 @@
                                                     </div>
                                                     @endif
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <h3 class="h2 mr-auto">{{$utente[0]->username}}</h3> <a href="{{ route('inviaRichiesta',['id'=>$utente[0]->id]) }}" id="pulsanteVediBlog" onclick = 'return confirm("Vuoi inviare la richiesta di amicizia?")'>Aggiungi + </a>
+                                                        <h3 class="h2 mr-auto">{{$utente[0]->username}}</h3> <a href="{{ route('inviaRichiesta',['id'=>$utente[0]->id]) }}" id="pulsanteVediBlog" style="background-color:#66B3FF;" onclick = 'return confirm("Vuoi inviare la richiesta di amicizia?")'>Aggiungi + </a>
                                                     </div>
                                                     <div class="account-info">
                                                         <div class="row py-2">

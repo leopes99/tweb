@@ -44,7 +44,7 @@
              @isset($friends)
             @foreach ($friends as $friend)
         <span id="elenco">
-            -<a href="{{ route('profileOther',['id'=>$friend->id]) }}"> {{$friend->nome}} {{$friend->cognome}}</a> <br>
+            -<a href="{{ route('profileResult',['id'=>$friend->id]) }}"> {{$friend->nome}} {{$friend->cognome}}</a> <br>
         </span>
 
         </ul>

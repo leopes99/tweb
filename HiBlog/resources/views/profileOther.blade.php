@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="container"> <br>    
-    <h4>In questa pagina puoi visualizzare il profilo di un altro utente. </h4>
+    <h4>In questa pagina puoi visualizzare il profilo di un tuo amico. </h4>
     <section class="find_section layout_padding">
 
         <div class="row">
