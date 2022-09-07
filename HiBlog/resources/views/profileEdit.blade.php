@@ -149,10 +149,10 @@
                               <img src="{{ URL('images/icon/calendario.png') }}" alt="Calendar Image" />
                             </div>
                           </div>
-                          {{ Form::date('datanascita',Auth::user()->data_nascita,['class' => 'input', 'id' => 'datanascita', 'style' => 'width:250px', 'min'=>"1900-01-01", 'max'=>"2004-01-01"]) }}
-                                @if ($errors->first('datanascita'))
+                          {{ Form::date('data_nascita',Auth::user()->data_nascita,['class' => 'input', 'id' => 'datanascita', 'style' => 'width:250px', 'min'=>"1900-01-01", 'max'=>"2004-01-01"]) }}
+                                @if ($errors->first('data_nascita'))
                                 <ul id="errore">
-                                    @foreach ($errors->get('datanascita') as $message)
+                                    @foreach ($errors->get('data_nascita') as $message)
                                     <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
@@ -181,9 +181,21 @@
                         </div>
                       </div>  
                   </div>
+                <br>
+                      <p>Decidi se far apparire il tuo profilo nelle ricerche di nuovi amici da parte di altri utenti.</p>
+                                {{ Form::select('visibile', ["si" => 'Sì' , "no" => 'No'], ['id' => 'visibile'])}}
+                                @if ($errors->first('visibile'))
+                            <ul id="errore">
+                                @foreach ($errors->get('visibile') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
+                                
                 <hr>
                   <center>
                     <div class="col-md-6 px-0">
+                        <p> Immettere la password attuale(o vecchia nel caso sia stata inserita una nuova password) per salvare le modifiche.</p>
                       <div class="form-group ">
                         <div class="input-group ">
                           <div class="input-group-prepend" >
@@ -201,6 +213,7 @@
                         </div>
                       </div>
                     </div>
+                      
                   </center>
                 <center>
                     

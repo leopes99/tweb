@@ -54,7 +54,7 @@
                      <h2>Informazioni sull'azienda</h2>
                      <span></span>
                      <p>Questo sito è stato realizzato dagli studenti del gruppo 53 del corso di Tecnologie Web di Ingegneria
-                      dell'informatica e dell'automazione, dell' Università Politecnica delle Marche. La documentaione 
+                      dell'informatica e dell'automazione, dell' Università Politecnica delle Marche. La documentazione 
                       riguardo il progetto è disponibile <a href="" style="color:blue;">qui.</a></p>
                      
                      

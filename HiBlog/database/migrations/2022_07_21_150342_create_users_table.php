@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('cognome');
             $table->date('data_nascita');
             $table->set('genere', ['Maschio','Femmina'])->nullable();
+            $table->set('visibile', ['si','no'])->nullable();
             $table->string('telefono');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('username',20);           

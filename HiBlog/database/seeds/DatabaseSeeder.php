@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'blog@blog.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'utente',
+             'visibile'=>'si',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
   
@@ -37,6 +38,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'staff@staff.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'staff',
+                'visibile'=>'si',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
 
@@ -50,6 +52,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'admin@admin.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'admin',
+                'visibile'=>'si',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],            
             
@@ -63,6 +66,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'mario@rossi.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'utente',
+                'visibile'=>'si',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
@@ -76,6 +80,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'luigi@verdi.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'utente',
+                'visibile'=>'si',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
@@ -89,6 +94,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'laura@bianchi.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'utente',
+                'visibile'=>'si',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
@@ -99,6 +105,7 @@ class DatabaseSeeder extends Seeder {
              'genere' => 'maschio',
              'telefono' => '3980901183',
              'username' => 'prova4',
+                'visibile'=>'no',
              'email' => 'luca@bianchi.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'utente',

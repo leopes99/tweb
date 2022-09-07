@@ -60,6 +60,13 @@
                                                                     <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Numero</div>
                                                                     <div class="col-12 col-md-8 col-xl-9 dd">+39&nbsp;{{Auth::user()->telefono}}</div>
                                                                 </div>
+                                                                <hr>
+                                                                <div class="row py-2">
+                                                                    <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Visibilità del profilo nella ricerca</div>
+                                                                    <div class="col-12 col-md-8 col-xl-9 dd"> 
+                                                                        <b style="text-transform: uppercase">{{Auth::user()->visibile}}</b>                                                                              
+                                                                    </div>
+                                                                </div>
                                                         </div>
 
 

@@ -12,7 +12,52 @@ use Illuminate\Support\Facades\DB;
 class Utenti {
 
    
-    
+    public function Ricerca($params, $wildcard){
+                if (strpos($params, $wildcard) !== false) {
+            $params2 = str_replace("*", "", $params);
+            $query = "SELECT * FROM users ";
+
+            $TabellaUtenti = DB::select($query);
+
+            foreach ($TabellaUtenti as $utenti) {
+                if($utenti->visibile=="si"){
+                    $unite = $utenti->nome . " " . $utenti->cognome;
+                    $unite2 = $utenti->cognome . " " . $utenti->nome;
+                    if ((strpos(strtolower($unite), strtolower($params2)) !== false) || (strpos(strtolower($unite2), strtolower($params2)) !== false)) {
+                        $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                       return $risultati[] = DB::select($query2);
+                    }
+                }
+            }
+        } else {
+
+            $query = "SELECT * FROM users";
+
+            $TabellaUtenti = DB::select($query);
+
+            foreach ($TabellaUtenti as $utenti) {
+                if($utenti->visibile=="si"){
+                    $unite = $utenti->nome . " " . $utenti->cognome;
+                    $unite2 = $utenti->cognome . " " . $utenti->nome;
+
+                    if (strtolower($utenti->nome) == strtolower($params)) {
+                        $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                       return $risultati[] = DB::select($query2);
+                    } else if (strtolower($utenti->cognome) == strtolower($params)) {
+                        $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                       return $risultati[] = DB::select($query2);
+                    } else if (strtolower($unite) == strtolower($params) || strtolower($unite2) == strtolower($params)) {
+                        $query2 = "SELECT * FROM users WHERE id = $utenti->id";
+
+                       return $risultati[] = DB::select($query2);
+                    }
+                }
+            }
+        }
+    }
 
 
     public function getFriends($params) {
