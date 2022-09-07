@@ -38,6 +38,7 @@ class ModificaProfiloRequest extends FormRequest {
             'password' => 'string|min:8|confirmed|nullable',
             'data_nascita' => 'date|before:today|nullable',
             'telefono' => 'numeric|digits_between:8,11|nullable',
+            'visibile'=>'nullable',
            
         ];
     }
