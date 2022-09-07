@@ -32,6 +32,8 @@
                         @yield('amici')
                         @yield('ricerca')
                         @yield('profileOther')
+                        @yield('profileResult')
+                        @yield('notifiche')
          
                     </div>                
             </div>

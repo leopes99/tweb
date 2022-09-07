@@ -1,6 +1,6 @@
 @extends('layouts.homepageLayout')
-@section('title', 'Profilo utente')
-@section('profile')
+@section('title', 'Profilo utente cercato')
+@section('profileResult')
 
 <!--  Titolo e breve descrizione della pagina -->
 <div class="inside-banner">
@@ -24,8 +24,13 @@
                                         <div class="individual__section">
                                             <center>
                                                 <div class="d-none d-md-block col-md-9">
+                                                    @if ($message = Session::get('avviso'))
+                                                    <div class="alert alert-danger alert-block">
+                                                        <strong>{{ $message }}</strong>
+                                                    </div>
+                                                    @endif
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <h3 class="h2 mr-auto">{{$utente[0]->username}}</h3> <a href="#" id="pulsanteVediBlog">Aggiungi + </a>
+                                                        <h3 class="h2 mr-auto">{{$utente[0]->username}}</h3> <a href="{{ route('inviaRichiesta',['id'=>$utente[0]->id]) }}" id="pulsanteVediBlog" onclick = 'return confirm("Vuoi inviare la richiesta di amicizia?")'>Aggiungi + </a>
                                                     </div>
                                                     <div class="account-info">
                                                         <div class="row py-2">

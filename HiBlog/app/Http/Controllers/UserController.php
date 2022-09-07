@@ -125,6 +125,34 @@ class userController extends Controller {
         $utente = DB::select($query);
         return view('profileResult', ['utente' => $utente]);
     }
+    
+    public function inviaRichiesta(Request $request) {
+     $id_richiedente = Auth::user()->id;
+     $id_ricevente = $request->id;
+     
+     $query1="select id_richiedente_amicizia, id_ricevente_amicizia from amicizie";
+     $amicizie = DB::select($query1);
+     $check = true;
+     foreach($amicizie as $amicizia){
+         if($amicizia->id_richiedente_amicizia == $id_richiedente){
+             if($amicizia->id_ricevente_amicizia == $id_ricevente){
+                 $check = false;
+                 echo '<pre>'; print_r($check); echo '</pre>';
+             }
+         }
+     }
+     if($check==true){
+        DB::insert('insert into amicizie (id_richiedente_amicizia, id_ricevente_amicizia, accettata) '
+                . 'values (?, ?, ?)', [$id_richiedente, $id_ricevente, 0]);
+        return back()->with('avviso', 'Richiesta inviata con successo!');
+     }else{
+        return back()->with('avviso', 'Hai già inviato una richiesta a questo utente!');}
+
+    }
+    
+    public function viewNotifiche() {
+        return view('notifiche');
+    }
 
 }
 

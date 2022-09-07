@@ -48,6 +48,11 @@
    
    Route::get('profileResult', 'UserController@viewProfileResult')->name('profileResult');
    
+   Route::get('inviaRichiesta/{id}', 'UserController@inviaRichiesta')->name('inviaRichiesta');
+   
+   Route::get('notifiche', 'UserController@viewNotifiche')->name('notifiche');
+
+   
 
                                                        
    //ROTTA PER LA RICERCA EFFETTIVA 
