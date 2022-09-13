@@ -131,6 +131,79 @@ class DatabaseSeeder extends Seeder {
             
         ]);
         
+        DB::table('blog')->insert([
+            [
+            'user_id'=> "1",    
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+            'nome'=>'Roma',
+            'tema'=>'Informazioni',
+            'descrizione'=>"In questo blog si discute dei migliori posti per mangiare a Roma",
+            'immagine'=>'roma.jpg',
+            ],
+            
+            [
+            'user_id'=> "1",    
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+            'nome'=>'Matematica facile',
+            'tema'=>'Didattica',
+            'descrizione'=>"Questo blog può essere utilizzato per la risoluzione di problemi facili",
+            'immagine'=>'matematica.jpg',
+            ], 
+            
+            [
+            'user_id'=> "4",    
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+            'nome'=>'Percorsi Gran Sasso',
+            'tema'=>'Escursioni',
+            'descrizione'=>"Questo blog discute di tutti i percorsi da fare al Gran Sasso assieme ai rifugi che si possono trovare.",
+            'immagine'=>'montegna.jpg',
+            ], 
+            
+            
+        ]);
+        
+        DB::table('post')->insert([
+            [
+            'user_id' => '1',
+            'id_blog' => '1',
+            'contenuto_post' => "Vi consiglio di andare al Ristorante Il Boncompagni",
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")],
+            [
+            'user_id' => '1',
+            'id_blog' => '1',
+            'contenuto_post' => "Non mi son trovato molto bene nell' Osteria degli Avvocati",
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")],
+            [
+            'user_id' => '6',
+            'id_blog' => '1',
+            'contenuto_post' => "Niente male la Gelateria Il Dolce Sorriso",
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+            'user_id' => '1',
+            'id_blog' => '2',
+            'contenuto_post' => "La funzione è una relazione tra 2 insiemi di A e B.",
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+            'user_id' => '6',
+            'id_blog' => '3',
+            'contenuto_post' => "Consiglio di fare un salto al Rifugio Franchetti, che si trova vicino alla sella dei due corni del Gran Sasso.",
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")],
+            
+            
+            
+            
+        ]);
+        
     }
 
 }

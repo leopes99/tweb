@@ -108,11 +108,10 @@ class Utenti {
         //echo '<pre>'; print_r($idamici); echo '</pre>';
         return $amici;
   }
-    
-   
-    
-   
+
 
 }
+
+   
 
 }

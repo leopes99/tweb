@@ -34,7 +34,8 @@
                         @yield('profileOther')
                         @yield('profileResult')
                         @yield('notifiche')
-         
+                        @yield('blogIndex')
+                        @yield('theblog')
                     </div>                
             </div>
            

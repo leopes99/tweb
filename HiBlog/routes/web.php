@@ -52,8 +52,9 @@
    
    Route::get('notifiche', 'UserController@viewNotifiche')->name('notifiche');
 
-   
+   Route::get('blog', 'UserController@viewblogS')->name('blogIndex');
 
+   Route::get('vediblog', 'UserController@OpenBlog')->name('vediblog');
                                                        
    //ROTTA PER LA RICERCA EFFETTIVA 
    

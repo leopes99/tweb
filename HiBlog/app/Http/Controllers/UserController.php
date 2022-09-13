@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\StringContains;
 use App\Models\Utenti;
+use App\Models\Blogs;
+use App\Models\Posts;
+
 use Hamcrest\Text\StringContainsIgnoringCase;
 use App\Http\Requests\RicercaAmicoRequest;
 
@@ -62,6 +65,8 @@ class userController extends Controller {
         $utente = DB::select($query);
         return view('profileOther', ['utente' => $utente]);
     }
+    
+    
     
     public function RicercaAmici(RicercaAmicoRequest $request) {
         // $params[] = collect($request->except('_token'));
@@ -117,6 +122,49 @@ class userController extends Controller {
         return view('notifiche');
     }
 
+    public function viewblogS(){
+        $utente = User::find(Auth::user()->id);
+        
+        $blog = new Blogs;
+        $mieiBlog=$blog->getBlogs($utente);
+        
+        if(!empty($mieiBlog)){
+            $numero_blog = count($mieiBlog);
+            
+            return view('BlogIndex', ['blogMiei' => $mieiBlog, 'numero_blog'=>$numero_blog]);
+        }else{
+            return view('BlogIndex', ['blogMiei' => ""]);
+        }
+        
+     
+    }
+    
+    public function OpenBlog(Request $request) {
+        $query = "select * from blog where BlogId='".$request->BlogId."'";
+        $Blog = DB::select($query);
+        
+        $IdBlog = $request->BlogId;
+        
+        
+        
+        $post = new Posts;
+        $postNelBlog=$post->getAllPost($IdBlog);
+        
+        if(!empty($postNelBlog)){
+            $numero_post = count($postNelBlog);
+
+           
+            return view('TheBlog', ['ThisBlog' => $Blog, 'Posts' => $postNelBlog, 'numero_post'=>$numero_post]);
+        }else{
+            return view('TheBlog', ['blogMiei' => ""]);
+        }
+        
+        
+        
+    }
+    
+    
+    
 }
 
 

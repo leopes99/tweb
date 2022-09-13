@@ -197,6 +197,106 @@ height:50px;background-color:#1CA6DC;margin-bottom:40px;margin-top:10px;}
   border-color: #dadada;
 }
 
+
+
+
+.button-43 {
+  background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  
+  text-decoration: none;
+  
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width:160px;
+  height:50px;
+}
+
+.button-43:hover {
+  background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+}
+
+@media (min-width: 768px) {
+  .button-43 {
+    padding: 1rem 2rem;
+  }
+}
+
+
+.button-43:hover{width:170px;
+  height:55px;
+  font-weight:bold;
+}
+
+#blogcard{padding-top:10px;
+          padding-bottom:10px;
+          border: 9px groove #2BA8FB;
+          border-radius: 9px;
+margin-bottom:30px;
+background-color:#E9F4FF;}
+
+#blogcard1{
+    max-width:250px;
+    max-height:200px;
+    margin-right:40px;
+    margin-left:10px;
+    border: 1px solid #19B4FF;
+}
+
+#blogcard2{margin-top:10px;
+}
+
+#blogcard3{font-family: "Arial Black", Gadget, sans-serif;
+font-size: 25px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #0D96C3;
+
+}
+#blogcard3:hover{font-size: 28px; font-weight: bold;}
+
+#blogcard4{font-family: Verdana, Geneva, sans-serif;
+font-size: 14px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #0E426C;}
+
+#blogcard5{
+    position:absolute;
+    max-width:50px;
+    max-height:50px;
+    right:205px;    
+}
+#blogcard5:hover{
+    max-width:53px;
+    max-height:53px;
+}
+
+#blog-titolo{font-family: Impact, Charcoal, sans-serif;
+font-size: 38px;
+letter-spacing: 2.4px;
+word-spacing: 2px;
+color: #1B99CB;}
+
+#blog-immagine{  
+    max-width:400px;
+    max-height:300px;
+    
+    border: 1px solid #19B4FF;
+}
+
+#blog-riga{
+    border-top: 3px double #8c8b8b;
+}
+
 h1,
 h2,
 h3,

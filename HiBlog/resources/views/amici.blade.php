@@ -30,7 +30,7 @@
         </div>
      @endif
     </center>
-
+    <br><br>
 </div>  
 
 @endsection

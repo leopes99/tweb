@@ -31,7 +31,7 @@
                                     </li>
                                     @can('isUtente')
                                         <a class="nav-link" href="{{route('amici',['id'=>Auth::user()->id])}}">Amici</a>
-                                        <a class="nav-link" href="#">Blog</a>
+                                        <a class="nav-link" href="{{route('blogIndex')}}">Blog</a>
                                         <a class="nav-link" href="{{route('notifiche')}}">Notifiche</a>
                                     @endcan
                                     
