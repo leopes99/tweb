@@ -156,7 +156,7 @@ class userController extends Controller {
            
             return view('TheBlog', ['ThisBlog' => $Blog, 'Posts' => $postNelBlog, 'numero_post'=>$numero_post]);
         }else{
-            return view('TheBlog', ['blogMiei' => ""]);
+            return view('TheBlog', ['ThisBlog' => $Blog]);
         }
         
         

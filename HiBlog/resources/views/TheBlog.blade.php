@@ -23,31 +23,36 @@
     </center>
     
     <hr id='blog-riga'>
+    <row>
+        <center><button class="button-7" role="button"><a href="#">Nuovo POST</a></button></center>
      @if(!empty($numero_post))
     <h2>Discussione({{$numero_post}}):</h2>
     @else <h2>Discussione(0):</h2>
     @endif
     
     
+    </row>
+    
     @if(!empty($Posts))
         @foreach ($Posts as $post)
+        <div id="ContenitorePost">
+            <div id="contenutoPost">
+        <p><b>Autore: {{$post[0]->nome}} 
+                {{$post[0]->cognome}} </b></p>
         
-        <p>Autore: {{$post[0]->nome}} 
-        {{$post[0]->cognome}} </p>
+        {{$post[0]->contenuto_post}}<br>
+        <i>{{$post[0]->created_at}}</i>
         
-        {{$post[0]->contenuto_post}}"><br>
-        {{$post[0]->created_at}}">
-        
-        <br><br>
+        <br></div> </div><br>
         @endforeach 
         
     
      @else
-           <div class="col-sm-8 col-md-8"><br><br><br>
-            <div class='detail-box'>
+           <div class="col-sm-10 col-md-12"><br><br><br>
+            <center>
                 <h4 style="color:red;"><b>Questo blog non ha ancora alcun Post al suo interno. Scrivi qualcosa utilizzando
-                    l' apposito tasto. </b></h4>
-            </div>
+                        l' apposito tasto. </b></h4><br>
+            </center>
         </div>
      @endif
      
