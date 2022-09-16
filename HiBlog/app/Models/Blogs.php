@@ -34,8 +34,11 @@ class Blogs extends Model
     }
        
     public function deleteBlog($IdBlog){
-            $query = "DELETE FROM blog WHERE `blog`.`BlogId` =$IdBlog ";
-             DB::delete($query);
+            $query=" DELETE FROM `post` WHERE `post`.`id_blog` = $IdBlog";
+        DB::delete($query);
+        
+            $query2 = "DELETE FROM blog WHERE `blog`.`BlogId` =$IdBlog ";
+             DB::delete($query2);
         
     }
     
