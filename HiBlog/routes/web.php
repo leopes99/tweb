@@ -56,6 +56,16 @@
 
    Route::get('vediblog', 'UserController@OpenBlog')->name('vediblog');
                                                        
+   Route::get('cancella', 'UserController@DeleteBlog' ) -> name('cancella');
+   
+   Route::get('crea', 'UserController@ViewCreateBlog' ) -> name('crea');
+   
+   Route::post('creaBlog', 'UserController@CreateBlog' ) -> name('creaBlog');
+   
+  
+   
+   Route::post('creaPost', 'UserController@CreatePost' ) -> name('creaPost');
+   
    //ROTTA PER LA RICERCA EFFETTIVA 
    
    //Route::post('ricerca', 'UserController@RicercaAmici')->name('ricerca');

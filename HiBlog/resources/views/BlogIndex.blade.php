@@ -1,6 +1,7 @@
 @extends('layouts.homepageLayout')
 @section('title', 'I miei blog')
 @section('blogIndex')
+<script src="{{ asset('/js/blog.js') }}"></script>
 
 <!--  Titolo e breve descrizione della pagina -->
 <div class="inside-banner">
@@ -10,10 +11,10 @@
     </div>
 </div>
 <div class="container"> <br>    
-    <h4>In questa pagina puoi visualizzare l'elenco dei tuoi blog disponibili. Se non ne hai creane subito uno! </h4><br>
+    <h4>In questa pagina puoi visualizzare l'elenco dei tuoi blog disponibili, visitarli ed eliminarli. Se non ne hai creane subito uno! </h4><br>
     
     
-    <center><a href='#'><button class="button-43" role="button" '>Crea BLOG</button></a></center>
+    <center><a href='{{ route('crea') }}'><button class="button-43" role="button" '>Crea BLOG</button></a></center>
     
     @if(!empty($numero_blog))
      <br><br><h3>Ecco i tuoi blog({{$numero_blog}}):</h3> <br>
@@ -28,11 +29,11 @@
            <br>   
            <p id="blogcard4">Descrizione: {{$blog[0]->descrizione}}<p>
            <br></div>
-            <img src="images/immcancella.png" id="blogcard5" usemap="#image-map2">
 
-            <map name="image-map2">
-                <area target="" alt="Cancella questo blog" title="Cancella questo blog" href="#" coords="0,0,358,358" shape="rect">
-            </map>
+                <a id="blogcard5"  href="{{ route('cancella',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
+            
+                
+           <!-- <button onclick='eliminaBlog({!!$blog[0]->BlogId!!})'>Codio </button> -->
         </div>
         
         

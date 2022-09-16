@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\ModificaProfiloRequest;
+use App\Http\Requests\NuovoBlogRequest;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use App\User;
@@ -11,6 +12,7 @@ use PHPUnit\Framework\Constraint\StringContains;
 use App\Models\Utenti;
 use App\Models\Blogs;
 use App\Models\Posts;
+use App\Http\Requests\NuovoPostRequest;
 
 use Hamcrest\Text\StringContainsIgnoringCase;
 use App\Http\Requests\RicercaAmicoRequest;
@@ -163,7 +165,75 @@ class userController extends Controller {
         
     }
     
+    public function DeleteBlog(Request $request){
+        
+        $IdBlog = $request->BlogId;
+        
+        $blog = new Blogs;
+        $blog->deleteBlog($IdBlog);
+        
+       
+          $utente = User::find(Auth::user()->id);
+        
+        $blog2 = new Blogs;
+        $mieiBlog=$blog2->getBlogs($utente);
+        
+        if(!empty($mieiBlog)){
+            $numero_blog = count($mieiBlog);
+            
+            return view('BlogIndex', ['blogMiei' => $mieiBlog, 'numero_blog'=>$numero_blog]);
+        }else{
+            return view('BlogIndex', ['blogMiei' => ""]);
+        }
+    }
     
+    public function ViewCreateBlog(){
+        return view("NewBlog");
+    }
+    
+    public function CreateBlog(NuovoBlogRequest $request){
+        
+        $utente = User::find(Auth::user()->id);
+        $idUtente=$utente->id;
+        
+         $blog = new Blogs;
+        $blog->Create_Blog($idUtente,$request);
+        
+        
+         $blog2 = new Blogs;
+        $mieiBlog=$blog2->getBlogs($utente);
+         $numero_blog = count($mieiBlog);
+            
+          
+         return view('BlogIndex', ['blogMiei' => $mieiBlog, 'numero_blog'=>$numero_blog]);
+         
+          
+    }
+    
+    public function ViewCreatePost(){
+        return view("NewPost");
+    }
+    
+    public function CreatePost(NuovoPostRequest $request){
+        
+        $post = new Posts;
+        $post->CreatePost($request);
+        
+        
+        
+         $query = "select * from blog where BlogId='".$request->BlogId."'";
+        $Blog = DB::select($query);
+        
+        $IdBlog = $request->BlogId;
+        
+        
+        
+        $post2 = new Posts;
+        $postNelBlog=$post2->getAllPost($IdBlog);
+         $numero_post = count($postNelBlog);
+         
+        return view('TheBlog', ['ThisBlog' => $Blog, 'Posts' => $postNelBlog, 'numero_post'=>$numero_post]);
+    }
     
 }
 

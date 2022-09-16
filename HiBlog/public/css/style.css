@@ -73,7 +73,7 @@ a {
 .login .form-group input{padding: 10px; height: 50px;}
 .login button,.register button,.contact button{width: 100%;border-radius: 5px;}
 
-#errore{color:red;  }
+#errore{color:red; font-weight: bold; }
 
 #pulsante2{-webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 4px 5px 15px 5px rgba(0,0,0,0); 
 box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 4px 5px 15px 5px rgba(0,0,0,0); width:200px;
@@ -244,8 +244,8 @@ margin-bottom:30px;
 background-color:#E9F4FF;}
 
 #blogcard1{
-    max-width:250px;
-    max-height:200px;
+    width:250px;
+    height:200px;
     margin-right:40px;
     margin-left:10px;
     border: 1px solid #19B4FF;
@@ -271,13 +271,14 @@ color: #0E426C;}
 
 #blogcard5{
     position:absolute;
-    max-width:50px;
-    max-height:50px;
-    right:205px;    
+    border: 5px inset #8CC6FF;
+    background-color: #C6E3FF;
+    right:215px;  
+    
+    font-size: 15px;
 }
 #blogcard5:hover{
-    max-width:53px;
-    max-height:53px;
+    font-size: 17px; font-weight: bold;
 }
 
 #blog-titolo{font-family: Impact, Charcoal, sans-serif;
@@ -351,6 +352,18 @@ color: #1B99CB;}
 
 #contenutoPost{
     margin-left:10px;
+}
+
+.input-blog{
+    width:350px; background-color:#D9ECFF;font-weight:bold;margin-left:10px;
+}
+
+.input-post{
+    width:800px;font-weight:bold;margin-left:10px; background-color:#D9ECFF;font-family: "Courier New", Courier, monospace;
+}
+
+.newpostDiv{
+    display:none;
 }
 
 h1,

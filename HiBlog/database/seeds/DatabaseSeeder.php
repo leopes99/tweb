@@ -159,7 +159,7 @@ class DatabaseSeeder extends Seeder {
             'nome'=>'Percorsi Gran Sasso',
             'tema'=>'Escursioni',
             'descrizione'=>"Questo blog discute di tutti i percorsi da fare al Gran Sasso assieme ai rifugi che si possono trovare.",
-            'immagine'=>'montegna.jpg',
+            'immagine'=>'montagna.jpg',
             ], 
             
             

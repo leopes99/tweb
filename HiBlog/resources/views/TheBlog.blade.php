@@ -1,7 +1,7 @@
 @extends('layouts.homepageLayout')
 @section('title', 'BLOG')
 @section('theblog')
-
+<script src="{{ asset('/js/blog.js') }}"></script>
 <!--  Titolo e breve descrizione della pagina -->
 <div class="inside-banner">
     <div class="container"> 
@@ -24,13 +24,37 @@
     
     <hr id='blog-riga'>
     <row>
-        <center><button class="button-7" role="button"><a href="#">Nuovo POST</a></button></center>
-     @if(!empty($numero_post))
-    <h2>Discussione({{$numero_post}}):</h2>
-    @else <h2>Discussione(0):</h2>
-    @endif
-    
-    
+        <center><button class="button-7" role="button" OnClick="mostra(name)" name="newpostDiv">Nuovo POST</button></center><br>
+
+        <div class ="newpostDiv" id='newpostDiv'><center>
+                {{ Form::open(array('route' => "creaPost", 'class' => 'contact-form' ,'enctype' =>"multipart/form-data")) }}
+
+                <div id="Contenitore-AddPost">
+                    <div class="form-group ">
+                        <div class="input-group ">
+
+                            <p>Scrivi qualcosa inerente al Blog: </p> {{ Form::textarea('contenuto_post', '', ['class' => 'input-post', 'id' => 'contenuto_post']) }}
+                            @if ($errors->first('contenuto_post'))
+                            <ul id="errore">
+                                @foreach ($errors->get('contenuto_post') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </div>
+                    </div>{{ Form::text('BlogId', "{$ThisBlog[0]->BlogId}", [ 'id' => 'BlogId', "style"=>"width:1px;height:1px; border: 0px solid #FFFFFF;"]) }}
+                </div>
+                {{ Form::submit('Aggiungi post', ['class' => 'button-7']) }}
+                {{ Form::close() }}
+            </center> </div>
+        <br>
+        @if(!empty($numero_post))
+        <h2>Discussione({{$numero_post}}):</h2>
+        @else <h2>Discussione(0):</h2>
+        @endif
+
+
+
     </row>
     
     @if(!empty($Posts))
@@ -57,4 +81,12 @@
      @endif
      
     
+
+
+
+
+
+
+
+     
 @endsection
