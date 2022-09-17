@@ -281,6 +281,18 @@ color: #0E426C;}
     font-size: 17px; font-weight: bold;
 }
 
+#blogcard5-2{
+    position:absolute;
+    border: 5px inset #8CC6FF;
+    background-color: #C6E3FF;
+    right:215px;  
+    
+    font-size: 15px;
+}
+#blogcard5-2:hover{
+    font-size: 17px; font-weight: bold;
+}
+
 #blog-titolo{font-family: Impact, Charcoal, sans-serif;
 font-size: 38px;
 letter-spacing: 2.4px;

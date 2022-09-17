@@ -17,7 +17,7 @@ class CreateBlogTable extends Migration
             $table->bigIncrements('BlogId');
             $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('nome',30);
+            $table->string('nomeblog',30);
             $table->string('tema',30);
             $table->string('descrizione',400);
             $table->string('immagine',200)->nullable();  

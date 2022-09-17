@@ -35,6 +35,10 @@
                                         <a class="nav-link" href="{{route('notifiche')}}">Notifiche</a>
                                     @endcan
                                     
+                                    @can('isStaff')
+                                    <a class="nav-link" href="{{route('allblogs')}}">Controllo blog</a>
+                                    @endcan
+                                    
                                     <!-- FINE PULSANTI NAVBAR -->
                                 </ul>
                                 

@@ -34,7 +34,8 @@ class Blogs extends Model
     }
        
     public function deleteBlog($IdBlog){
-            $query=" DELETE FROM `post` WHERE `post`.`id_blog` = $IdBlog";
+            
+        $query=" DELETE FROM `post` WHERE `post`.`id_blog` = $IdBlog";
         DB::delete($query);
         
             $query2 = "DELETE FROM blog WHERE `blog`.`BlogId` =$IdBlog ";
@@ -44,7 +45,7 @@ class Blogs extends Model
     
     public function Create_Blog($idUtente, $request) {
         if ($request->immagine == null) {
-            $query = "INSERT INTO blog ( `user_id`, `nome`, `tema`, `descrizione`, `immagine`) VALUES ( $idUtente, '$request->nome', '$request->tema', '$request->descrizione', 'DefaultBlog.png');";
+            $query = "INSERT INTO blog ( `user_id`, `nomeblog`, `tema`, `descrizione`, `immagine`) VALUES ( $idUtente, '$request->nomeblog', '$request->tema', '$request->descrizione', 'DefaultBlog.png');";
         } else {
             if ($request->hasFile('immagine')) {
                 $image = $request->file('immagine');
@@ -56,7 +57,7 @@ class Blogs extends Model
                 $destinationPath = public_path() . '/images';
                 $image->move($destinationPath, $imageName);
             }
-            $query = "INSERT INTO `blog` ( `user_id`, `nome`, `tema`, `descrizione`, `immagine`) VALUES ( $idUtente, '$request->nome', '$request->tema', '$request->descrizione', '$imageName');";
+            $query = "INSERT INTO `blog` ( `user_id`, `nomeblog`, `tema`, `descrizione`, `immagine`) VALUES ( $idUtente, '$request->nomeblog', '$request->tema', '$request->descrizione', '$imageName');";
         }
         DB::insert($query);
     }

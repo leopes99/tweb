@@ -23,7 +23,7 @@
         @foreach ($blogMiei as $blog)
         
         <div class="row" id="blogcard">
-            <img id="blogcard1" src="images/{{$blog[0]->immagine}}"><div id="BlogCard2"><a href="{{ route('vediblog',['BlogId'=>$blog[0]->BlogId]) }}" id="blogcard3">{{$blog[0]->nome}}</a>
+            <img id="blogcard1" src="images/{{$blog[0]->immagine}}"><div id="BlogCard2"><a href="{{ route('vediblog',['BlogId'=>$blog[0]->BlogId]) }}" id="blogcard3">{{$blog[0]->nomeblog}}</a>
                 <br>
                 <p id="blogcard4">Tema: <b>{{$blog[0]->tema}}</b><p>
            <br>   

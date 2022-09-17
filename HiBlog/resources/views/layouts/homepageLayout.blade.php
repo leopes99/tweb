@@ -38,7 +38,9 @@
                         @yield('blogIndex')
                         @yield('theblog')
                         @yield('NuovoBlog')
-                       
+                        @yield('GestBlogs')
+                        @yield('BlogControl')
+
                     </div>                
             </div>
            

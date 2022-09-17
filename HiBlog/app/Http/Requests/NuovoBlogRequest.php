@@ -28,7 +28,7 @@ class NuovoBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|max:25',
+            'nomeblog' => 'required|max:25',
             'tema' => 'required|max:20',
             'descrizione' => 'required|max:1000',
             'immagine' => 'max:3000|nullable',
@@ -39,7 +39,7 @@ class NuovoBlogRequest extends FormRequest
 {
     return [
         
-        'nome.required'=>'Il nome è obbligatorio',
+        'nomeblog.required'=>'Il nome è obbligatorio',
         'tema.required'=>'La tematica è obbligatoria',
         'descrizione.required'=>'La descrizione è obbligatoria',
         

@@ -66,10 +66,15 @@
    
    Route::post('creaPost', 'UserController@CreatePost' ) -> name('creaPost');
    
-   //ROTTA PER LA RICERCA EFFETTIVA 
-   
-   //Route::post('ricerca', 'UserController@RicercaAmici')->name('ricerca');
+
    
   // ROUTES LIVELLO 3 (STAFF)
   
+   Route::get('allblogs', 'StaffController@ViewAllBlogs' ) -> name('allblogs');
+   
+   Route::get('cancella2', 'StaffController@DeleteBlog' ) -> name('cancella2');
+   
+   Route::get('VediGestBlog', 'StaffController@VisualizzaBlog' ) -> name('VediGestBlog');
+   
+   Route::get('cancella3', 'StaffController@DeletePost' ) -> name('cancella3');
   // ROUTES LIVELLO 4 (ADMIN)
