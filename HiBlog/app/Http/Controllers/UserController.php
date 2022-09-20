@@ -193,6 +193,7 @@ class userController extends Controller {
         $IdBlog = $request->BlogId;
         
         $blog = new Blogs;
+        
         $blog->deleteBlog($IdBlog);
         
        

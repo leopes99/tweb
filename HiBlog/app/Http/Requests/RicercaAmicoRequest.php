@@ -33,5 +33,15 @@ class RicercaAmicoRequest extends FormRequest {
         ];
     }
     
+    public function messages()
+{
+    return [
+        
+        'cercaAmici.required'=>'Non puoi cercare una stringa vuota!',
+        
+        
+        
+    ];
+}
 
 }

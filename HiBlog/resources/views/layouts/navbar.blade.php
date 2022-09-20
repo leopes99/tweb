@@ -36,7 +36,13 @@
                                     @endcan
                                     
                                     @can('isStaff')
+                                    <a class="nav-link" href="{{route('allblogss')}}">Controllo blog</a>
+                                    @endcan
+                                    
+                                    @can('isAdmin')
                                     <a class="nav-link" href="{{route('allblogs')}}">Controllo blog</a>
+                                    <a class="nav-link" href="{{route('viewGestUtenti')}}">Gestione utenti</a>
+                                    <a class="nav-link" href="{{route('viewStats')}}">Statistiche</a>
                                     @endcan
                                     
                                     <!-- FINE PULSANTI NAVBAR -->

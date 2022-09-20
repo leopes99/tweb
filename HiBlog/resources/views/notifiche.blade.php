@@ -1,4 +1,4 @@
-@extends('layouts.homepageLayout')
+ @extends('layouts.homepageLayout')
 @section('title', 'Notifiche')
 @section('notifiche')
 <script src="{{ asset('/js/blog.js') }}"></script>
@@ -10,7 +10,9 @@
         <h2>Notifiche</h2>
     </div>
 </div>
+
 <div class="container"> <br>    
+    
     <h4>In questa pagina puoi visualizzare le notifiche ricevute.</h4>
     <br>
     
@@ -50,7 +52,7 @@
           <h4>Non hai ricevuto richieste d'amicizia.</h4>
         </div>
       </div>
-
+    <br><br>
    @endif
-    
+</div>   
 @endsection

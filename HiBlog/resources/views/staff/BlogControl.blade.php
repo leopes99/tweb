@@ -48,7 +48,12 @@
         
         {{$post[0]->contenuto_post}}<br>
         <i>{{$post[0]->created_at}}</i>
+        @can('isStaff')
+        <a id="blogcard5-2" href="{{ route('cancella3s',['PostId'=>$post[0]->PostId,'BlogId'=>$ThisBlog[0]->BlogId]) }}">Cancella POST</a>
+        @endcan
+        @can('isAdmin')
         <a id="blogcard5-2" href="{{ route('cancella3',['PostId'=>$post[0]->PostId,'BlogId'=>$ThisBlog[0]->BlogId]) }}">Cancella POST</a>
+        @endcan
         <br><br></div> </div><br>
         @endforeach 
         

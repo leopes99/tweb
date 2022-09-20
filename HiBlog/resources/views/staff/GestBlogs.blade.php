@@ -32,12 +32,21 @@
             </div>
             
             <img id="blogcard1" src="images/{{$blog[0]->immagine}}">
+            @can('isStaff')
+                <a id="blogcard5" style="margin-right:30px;" href="{{ route('cancella2s',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
+            @endcan  
+            @can('isAdmin')
                 <a id="blogcard5" style="margin-right:30px;" href="{{ route('cancella2',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
-                
+            @endcan    
               
               <div id="BlogCard2">  
+                  @can('isStaff')
+                <a href="{{ route('VediGestBlogs',['BlogId'=>$blog[0]->BlogId]) }}" id="blogcard3" style="margin-left:10px; color:purple;">Vedi Blog</a>
+                    @endcan
+                    @can('isAdmin')
                 <a href="{{ route('VediGestBlog',['BlogId'=>$blog[0]->BlogId]) }}" id="blogcard3" style="margin-left:10px; color:purple;">Vedi Blog</a>
-            </div>    
+                    @endcan
+              </div>    
                 <br>
                 <p id="blogcard4" style="margin-left:10px;">Tema: <b>{{$blog[0]->tema}}</b><p>
            <br>   

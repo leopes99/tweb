@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'staff@staff.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'staff',
-                'visibile'=>'si',
+                'visibile'=>'no',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
 
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder {
              'email' => 'admin@admin.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'admin',
-                'visibile'=>'si',
+                'visibile'=>'no',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],            
             
@@ -109,6 +109,20 @@ class DatabaseSeeder extends Seeder {
              'email' => 'luca@bianchi.it',
              'password' => Hash::make('0UXH4k3H'),
              'role' => 'utente',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+             'nome' => 'staff2',
+             'cognome' => 'staff2',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'telefono' => '3981111311',
+             'username' => 'staffstaff2',
+             'email' => 'staff2@staff.it',
+             'password' => Hash::make('0UXH4k3H'),
+             'role' => 'staff',
+                'visibile'=>'no',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
         ]);

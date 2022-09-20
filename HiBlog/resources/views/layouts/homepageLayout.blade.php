@@ -40,7 +40,11 @@
                         @yield('NuovoBlog')
                         @yield('GestBlogs')
                         @yield('BlogControl')
-
+                        @yield('GestUtenti')
+                        @yield('AggiungiStaff')
+                        @yield('ModifyStaff')
+                        @yield('Stats')
+                        @yield('ProfileStats')
                     </div>                
             </div>
            

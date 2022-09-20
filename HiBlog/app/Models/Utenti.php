@@ -26,7 +26,7 @@ class Utenti {
                     if ((strpos(strtolower($unite), strtolower($params2)) !== false) || (strpos(strtolower($unite2), strtolower($params2)) !== false)) {
                         $query2 = "SELECT * FROM users WHERE id = $utenti->id";
 
-                       return $risultati[] = DB::select($query2);
+                        $risultati[] = DB::select($query2);
                     }
                 }
             }
@@ -44,19 +44,20 @@ class Utenti {
                     if (strtolower($utenti->nome) == strtolower($params)) {
                         $query2 = "SELECT * FROM users WHERE id = $utenti->id";
 
-                       return $risultati[] = DB::select($query2);
+                        $risultati[] = DB::select($query2);
                     } else if (strtolower($utenti->cognome) == strtolower($params)) {
                         $query2 = "SELECT * FROM users WHERE id = $utenti->id";
 
-                       return $risultati[] = DB::select($query2);
+                        $risultati[] = DB::select($query2);
                     } else if (strtolower($unite) == strtolower($params) || strtolower($unite2) == strtolower($params)) {
                         $query2 = "SELECT * FROM users WHERE id = $utenti->id";
 
-                       return $risultati[] = DB::select($query2);
+                        $risultati[] = DB::select($query2);
                     }
                 }
             }
         }
+        if(!empty($risultati))return $risultati;
     }
 
 

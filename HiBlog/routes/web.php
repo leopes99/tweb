@@ -48,9 +48,11 @@
    
    Route::get('profileResult', 'UserController@viewProfileResult')->name('profileResult');
    
-   Route::get('inviaRichiesta/{id}', 'UserController@inviaRichiesta')->name('inviaRichiesta');
-   Route::get('accettaRichiesta/{id}', 'UserController@accettaRichiesta')->name('accettaRichiesta');
-   Route::get('eliminaRichiesta/{id}', 'UserController@eliminaRichiesta')->name('eliminaRichiesta');
+   Route::get('inviaRichiesta', 'UserController@inviaRichiesta')->name('inviaRichiesta');
+   
+   Route::get('accettaRichiesta', 'UserController@accettaRichiesta')->name('accettaRichiesta');
+   
+   Route::get('eliminaRichiesta', 'UserController@eliminaRichiesta')->name('eliminaRichiesta');
    
    Route::get('notifiche', 'UserController@viewNotifiche')->name('notifiche');
 
@@ -72,11 +74,39 @@
    
   // ROUTES LIVELLO 3 (STAFF)
   
-   Route::get('allblogs', 'StaffController@ViewAllBlogs' ) -> name('allblogs');
+   Route::get('allblogss', 'StaffController@ViewAllBlogs' ) -> name('allblogss');
    
-   Route::get('cancella2', 'StaffController@DeleteBlog' ) -> name('cancella2');
+   Route::get('cancella2s', 'StaffController@DeleteBlog' ) -> name('cancella2s');
    
-   Route::get('VediGestBlog', 'StaffController@VisualizzaBlog' ) -> name('VediGestBlog');
+   Route::get('VediGestBlogs', 'StaffController@VisualizzaBlog' ) -> name('VediGestBlogs');
    
-   Route::get('cancella3', 'StaffController@DeletePost' ) -> name('cancella3');
+   Route::get('cancella3s', 'StaffController@DeletePost' ) -> name('cancella3s');
+   
+   
   // ROUTES LIVELLO 4 (ADMIN)
+   
+    Route::get('allblogs', 'AdminController@ViewAllBlogs' ) -> name('allblogs');
+    
+    Route::get('cancella2', 'AdminController@DeleteBlog' ) -> name('cancella2');
+    
+    Route::get('VediGestBlog', 'AdminController@VisualizzaBlog' ) -> name('VediGestBlog');
+   
+    Route::get('cancella3', 'AdminController@DeletePost' ) -> name('cancella3');
+    
+    Route::get('viewGestUtenti', 'AdminController@ViewGestUtenti' ) -> name('viewGestUtenti');
+    
+    Route::get('viewAddStaff', 'AdminController@viewAddStaff' ) -> name('viewAddStaff');
+    
+    Route::post('AddStaff', 'AdminController@AddStaff')->name('AddStaff');
+    
+    Route::get('cancStaff', 'AdminController@DeleteStaff' ) -> name('cancStaff');
+    
+    Route::get('EditStaff', 'AdminController@viewEditStaff')->name('viewEditStaff'); 
+  
+    Route::post('EditStaff', 'AdminController@EditStaff')->name('EditStaff');
+    
+    Route::get('viewStats', 'AdminController@viewStats')->name('viewStats'); 
+    
+    Route::post('ricercaStat', 'AdminController@ricercaStat')->name('ricercaStat');
+    
+    Route::get('profileStats', 'AdminController@profileStats')->name('profileStats'); 
