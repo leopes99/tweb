@@ -49,6 +49,8 @@
    Route::get('profileResult', 'UserController@viewProfileResult')->name('profileResult');
    
    Route::get('inviaRichiesta/{id}', 'UserController@inviaRichiesta')->name('inviaRichiesta');
+   Route::get('accettaRichiesta/{id}', 'UserController@accettaRichiesta')->name('accettaRichiesta');
+   Route::get('eliminaRichiesta/{id}', 'UserController@eliminaRichiesta')->name('eliminaRichiesta');
    
    Route::get('notifiche', 'UserController@viewNotifiche')->name('notifiche');
 

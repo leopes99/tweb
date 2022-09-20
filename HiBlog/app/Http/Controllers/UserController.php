@@ -120,8 +120,31 @@ class userController extends Controller {
 
     }
     
-    public function viewNotifiche() {
+    public function viewNotifiche(Request $request) {
+        $id = Auth::user()->id;
+        $query = "select * from amicizie where accettata='0' ";
+        $richieste = DB::select($query);
+        foreach($richieste as $richiesta){
+         if($richiesta->id_ricevente_amicizia == $id){
+               $query2 = "SELECT * FROM users INNER JOIN amicizie ON amicizie.id_richiedente_amicizia = users.id WHERE id_ricevente_amicizia = $id";
+                $richiesteRicevute[] = DB::select($query2);
+            }
+          }
+      if(!empty($richiesteRicevute)){
+        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute]);
+      }else{
         return view('notifiche');
+      }
+    }
+    
+    public function accettaRichiesta(Request $request) {
+         DB::update('update amicizie set accettata =? where AmiciziaId = ?',[1,$request->id]);
+         return view('notifiche');
+    }
+  
+    public function eliminaRichiesta(Request $request) {
+        DB::delete('delete from amicizie where AmiciziaId = ?',[$request->id]);
+        return redirect()->route('notifiche');
     }
 
     public function viewblogS(){
