@@ -71,23 +71,24 @@ class userController extends Controller {
     
     
     public function RicercaAmici(RicercaAmicoRequest $request) {
-        // $params[] = collect($request->except('_token'));
-        $params = $request->cercaAmici;
-        $wildcard = "*";
-        $controllo1="**";$controllo2="***";$controllo3="****";
+        
+        $params = $request->cercaAmici;  //prendo la stringa digitata dall'utente
+        $wildcard = "*";    //creo una variabile chiamandola wildcard, servirà per effettuare un controllo e per fare la ricerca parziale
+        $controllo1="**";$controllo2="***";$controllo3="****";//creo altre 3 variabili che mi serviranno per fare un controllo multiplo
         if($params==$wildcard||$params==$controllo1||$params==$controllo2||$params==$controllo3)return view('ricerca')->with('friends', "");
-        //$test= str_replace("*","",$params);
-        //echo '<pre>'; print_r($test); echo '</pre>';
+        //vado ad assicurarmi che il testo digitato non contenga esclusivamente 1,2,3,4 caratteri wildcard "*", in caso positivo
+        //viene ritornata la vista senza risultati. Nel caso non ci fosse questo controllo il sito darebbe errore
+        
         $ric = new Utenti;
-        $risultati=$ric-> Ricerca($params,$wildcard );
+        $risultati=$ric-> Ricerca($params,$wildcard ); //faccio partire la funzione Ricerca contenuta in Models/Utenti.php
+                                                       //passandogli il carattere wildcard e la stringa digitata dall'utente.
        
 
-        if (!empty($risultati))
+        if (!empty($risultati))//se la variabile risultati che contiene i profili trovati contiene risultati la passo alla vista
             return view('ricerca')->with('friends', $risultati);
         else
-            return view('ricerca')->with('friends', "");
-        //$variabile = $this->users->getFriends($params); 
-        //echo '<pre>'; print_r($variabile); echo '</pre>';
+            return view('ricerca')->with('friends', "");//altrimenti non gli passo niente, per evitare errori
+        
     }
     
     public function viewProfileResult(Request $request) {
