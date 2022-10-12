@@ -33,7 +33,7 @@ class Staff {
     
     public function deletePost($IdPost){
           
-        $query= "DELETE FROM `post` WHERE `post`.`PostId` = $IdPost";
+        $query= "DELETE FROM post WHERE PostId = $IdPost";
         DB::delete($query);
         
          

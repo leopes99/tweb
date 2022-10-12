@@ -54,6 +54,8 @@
    
    Route::get('eliminaRichiesta', 'UserController@eliminaRichiesta')->name('eliminaRichiesta');
    
+   Route::get('eliminaAmicizia', 'UserController@eliminaAmicizia')->name('eliminaAmicizia');
+   
    Route::get('notifiche', 'UserController@viewNotifiche')->name('notifiche');
 
    Route::get('blog', 'UserController@viewblogS')->name('blogIndex');
@@ -76,22 +78,22 @@
   
    Route::get('allblogss', 'StaffController@ViewAllBlogs' ) -> name('allblogss');
    
-   Route::get('cancella2s', 'StaffController@DeleteBlog' ) -> name('cancella2s');
+   Route::post('cancella2s', 'StaffController@DeleteBlog' ) -> name('cancella2s');
    
    Route::get('VediGestBlogs', 'StaffController@VisualizzaBlog' ) -> name('VediGestBlogs');
    
-   Route::get('cancella3s', 'StaffController@DeletePost' ) -> name('cancella3s');
+   Route::post('cancella3s', 'StaffController@DeletePost' ) -> name('cancella3s');
    
    
   // ROUTES LIVELLO 4 (ADMIN)
    
     Route::get('allblogs', 'AdminController@ViewAllBlogs' ) -> name('allblogs');
     
-    Route::get('cancella2', 'AdminController@DeleteBlog' ) -> name('cancella2');
+    Route::post('cancella2', 'AdminController@DeleteBlog' ) -> name('cancella2');
     
     Route::get('VediGestBlog', 'AdminController@VisualizzaBlog' ) -> name('VediGestBlog');
    
-    Route::get('cancella3', 'AdminController@DeletePost' ) -> name('cancella3');
+    Route::post('cancella3', 'AdminController@DeletePost' ) -> name('cancella3');
     
     Route::get('viewGestUtenti', 'AdminController@ViewGestUtenti' ) -> name('viewGestUtenti');
     

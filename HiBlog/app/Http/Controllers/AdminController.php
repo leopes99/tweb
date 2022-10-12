@@ -91,19 +91,25 @@ class AdminController extends Controller {
     }
  
     public function DeletePost(Request $request){
-        $IdBlog = $request->BlogId;
-        $IdPost=$request->PostId;
-        
+        $IdPost = $request->PostId;
+        $motivo = $request->motivazione;
+        $query2 =  "select * from post where PostId = '$IdPost' ";
+        $postEliminato = DB::select($query2);
+        $idDestinatario = $postEliminato[0]->user_id;
+        $IdBlog = $postEliminato[0]->id_blog;
+        $contenutoPost = $postEliminato[0]->contenuto_post;
+        date_default_timezone_set('Europe/Rome');
+        $DataOra = date('Y-m-d H:i:s');
+       
+        DB::insert('insert into notifiche (id_destinatario, tipologia_notifica, id_blog, contenuto_post, motivo_cancellazione, created_at) '
+                . 'values (?, ?, ?, ?, ?, ?)', [$idDestinatario, 'RimozionePost', $IdBlog, $contenutoPost, $motivo, $DataOra]);
         
         $postDaCancellare=new Staff;
         $postDaCancellare->deletePost($IdPost);
         
-        $query2 = "select * from blog where BlogId = '$IdBlog' ";
-        $Blog = DB::select($query2);
+        $query4 = "select * from blog where BlogId = '$IdBlog' ";
+        $Blog = DB::select($query4);
 
- 
- 
- 
         $post = new Posts;
         $postNelBlog=$post->getAllPost($IdBlog);
         if(!empty($postNelBlog)){
@@ -114,6 +120,7 @@ class AdminController extends Controller {
         }else{
             return view('staff/BlogControl', ['ThisBlog' => $Blog]);
         }
+        
         
     }
 

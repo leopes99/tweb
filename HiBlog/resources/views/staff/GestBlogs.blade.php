@@ -33,11 +33,61 @@
             
             <img id="blogcard1" src="images/{{$blog[0]->immagine}}">
             @can('isStaff')
-                <a id="blogcard5" style="margin-right:30px;" href="{{ route('cancella2s',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
-            @endcan  
-            @can('isAdmin')
-                <a id="blogcard5" style="margin-right:30px;" href="{{ route('cancella2',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
-            @endcan    
+        <a id="blogcard5-2" OnClick="mostra(name)" name="motivazioneBlog{{$blog[0]->BlogId}}">Cancella BLOG</a>
+        <br><br></div> </div><br>
+
+        <div class ="motivazioneBlog" id='motivazioneBlog{{$blog[0]->BlogId}}' style="display:none;">
+            {{ Form::open(array('route' => 'cancella2s', 'class' => 'contact-form' ,'enctype' =>"multipart/form-data")) }}
+
+            <div id="Contenitore-AddPost">
+                <div class="form-group ">
+                    <div class="input-group ">
+
+                        {{ Form::text('BlogId', $blog[0]->BlogId, ['class' => 'input-post', 'id' => 'BlogId']) }}
+
+                        {{ Form::textarea('motivazioneBlog', '', ['class' => 'input-post', 'id' => 'motivazioneBlog', 'placeholder'=>"Inserisci una motivazione all'eliminazione del post"]) }}
+                        @if ($errors->first('motivazioneBlog'))
+                        <ul id="errore">
+                            @foreach ($errors->get('motivazioneBlog') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            {{ Form::submit('Elimina blog', ['class' => 'button-7']) }}
+            {{ Form::close() }}
+        </div>
+        @endcan
+        @can('isAdmin')
+        <a id="blogcard5-2" OnClick="mostra(name)" name="motivazioneBlog{{$blog[0]->BlogId}}">Cancella BLOG</a>
+        <br><br></div> </div><br>
+
+        <div class ="motivazioneBlog" id='motivazioneBlog{{$blog[0]->BlogId}}' style="display:none;">
+            {{ Form::open(array('route' => 'cancella2', 'class' => 'contact-form' ,'enctype' =>"multipart/form-data")) }}
+
+            <div id="Contenitore-AddPost">
+                <div class="form-group ">
+                    <div class="input-group ">
+
+                        {{ Form::text('BlogId', $blog[0]->BlogId, ['class' => 'input-post', 'id' => 'BlogId']) }}
+
+                        {{ Form::textarea('motivazioneBlog', '', ['class' => 'input-post', 'id' => 'motivazioneBlog', 'placeholder'=>"Inserisci una motivazione all'eliminazione del post"]) }}
+                        @if ($errors->first('motivazioneBlog'))
+                        <ul id="errore">
+                            @foreach ($errors->get('motivazioneBlog') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            {{ Form::submit('Elimina blog', ['class' => 'button-7']) }}
+            {{ Form::close() }}
+        </div>
+        @endcan 
               
               <div id="BlogCard2">  
                   @can('isStaff')

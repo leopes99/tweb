@@ -17,14 +17,12 @@ class CreateNotificheTable extends Migration
           $table->bigIncrements('NotificaId');
             $table->unsignedBigInteger('id_destinatario');
             $table->foreign('id_destinatario')->references('id')->on('users');
-            $table->set('tipologia-notifica', ['CreazionePost','RimozionePost','RimozioneBlog']);
+            $table->set('tipologia_notifica', ['CreazionePost','RimozionePost','RimozioneBlog']);
             
             
-            $table->unsignedBigInteger('id_blog')->nullable();
-            $table->unsignedBigInteger('id_post')->nullable();
+            $table->string('nome_blog')->nullable();
             
-            $table->foreign('id_post')->references('PostId')->on('post');
-            $table->foreign('id_blog')->references('BlogId')->on('blog');
+            $table->string('contenuto_post')->nullable();
             
             $table->string('motivo_cancellazione');
             $table->timestamps();

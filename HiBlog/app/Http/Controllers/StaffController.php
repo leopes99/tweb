@@ -49,6 +49,14 @@ class StaffController extends Controller
         
         $IdBlog = $request->BlogId;
         
+        $motivo = $request->motivazioneBlog;
+        $query2 =  "select * from blog where BlogId = '$IdBlog' ";
+        $blogEliminato = DB::select($query2);
+        $idDestinatario = $blogEliminato[0]->user_id;
+        date_default_timezone_set('Europe/Rome');
+        $DataOra = date('Y-m-d H:i:s');
+        $NomeBlog = $blogEliminato[0]->nomeblog; 
+       
         $blog = new Blogs;
         
         $blog->deleteBlog($IdBlog);
@@ -56,6 +64,10 @@ class StaffController extends Controller
         $TuttiBlog = new Staff;
         $ListaBlogs=$TuttiBlog->getAllBlogs();
         
+        #echo '<pre>'; print_r($IdBlog); echo '</pre>';
+        
+        DB::insert('insert into notifiche (id_destinatario, tipologia_notifica, nome_blog, contenuto_post, motivo_cancellazione, created_at) '
+                . 'values (?, ?, ?, ?, ?, ?)', [$idDestinatario, 'RimozioneBlog', $NomeBlog, '', $motivo, $DataOra]);
         
         if(!empty($ListaBlogs)){
             $numblog=count($ListaBlogs);
@@ -88,19 +100,25 @@ class StaffController extends Controller
     }
  
     public function DeletePost(Request $request){
-        $IdBlog = $request->BlogId;
-        $IdPost=$request->PostId;
-        
+        $IdPost = $request->PostId;
+        $motivo = $request->motivazione;
+        $query2 =  "select * from post where PostId = '$IdPost' ";
+        $postEliminato = DB::select($query2);
+        $idDestinatario = $postEliminato[0]->user_id;
+        $IdBlog = $postEliminato[0]->id_blog;
+        $contenutoPost = $postEliminato[0]->contenuto_post;
+        date_default_timezone_set('Europe/Rome');
+        $DataOra = date('Y-m-d H:i:s');
+       
+        DB::insert('insert into notifiche (id_destinatario, tipologia_notifica, nome_blog,contenuto_post, motivo_cancellazione, created_at) '
+                . 'values (?, ?, ?, ?, ?, ?)', [$idDestinatario, 'RimozionePost', null, $contenutoPost, $motivo, $DataOra]);
         
         $postDaCancellare=new Staff;
         $postDaCancellare->deletePost($IdPost);
         
-        $query2 = "select * from blog where BlogId = '$IdBlog' ";
-        $Blog = DB::select($query2);
+        $query4 = "select * from blog where BlogId = '$IdBlog' ";
+        $Blog = DB::select($query4);
 
- 
- 
- 
         $post = new Posts;
         $postNelBlog=$post->getAllPost($IdBlog);
         if(!empty($postNelBlog)){

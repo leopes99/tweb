@@ -107,7 +107,7 @@ class userController extends Controller {
          if($amicizia->id_richiedente_amicizia == $id_richiedente){
              if($amicizia->id_ricevente_amicizia == $id_ricevente){
                  $check = false;
-                 echo '<pre>'; print_r($check); echo '</pre>';
+                 #echo '<pre>'; print_r($check); echo '</pre>';
              }
          }
      }
@@ -124,16 +124,30 @@ class userController extends Controller {
         $id = Auth::user()->id;
         $query = "select * from amicizie where accettata='0' ";
         $richieste = DB::select($query);
+        
         foreach($richieste as $richiesta){
          if($richiesta->id_ricevente_amicizia == $id){
                $query2 = "SELECT * FROM users INNER JOIN amicizie ON amicizie.id_richiedente_amicizia = users.id WHERE id_ricevente_amicizia = $id";
                 $richiesteRicevute[] = DB::select($query2);
             }
           }
-      if(!empty($richiesteRicevute)){
-        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute]);
+          
+        $query3 = "select * from notifiche where id_destinatario = $id";
+        $notifiche = DB::select($query3);
+        
+        #$query4 = "SELECT * FROM notifiche ";
+                #INNER JOIN blog ON notifiche.id_blog = blog.BlogId WHERE id_destinatario = $id
+        $notificheRicevute = DB::select($query3);
+          
+          #echo '<pre>'; print_r($notificheRicevute); echo '</pre>';
+      if(!empty($richiesteRicevute) && !empty($notifiche)){
+        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notificheRicevute]);
+      }elseif(!empty($richiesteRicevute) && empty($notifiche)){
+          return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '']);
+      }elseif(empty($richiesteRicevute) && !empty($notifiche)){
+          return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notificheRicevute]);
       }else{
-        return view('notifiche');
+        return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '']);
       }
     }
     
@@ -145,6 +159,13 @@ class userController extends Controller {
     public function eliminaRichiesta(Request $request) {
         DB::delete('delete from amicizie where AmiciziaId = ?',[$request->id]);
         return redirect()->route('notifiche');
+    }
+    
+    public function eliminaAmicizia(Request $request) {
+        $id = Auth::user()->id;
+        DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $request->idOther, $id]);
+        DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $id, $request->idOther]);
+        return view('amici');
     }
 
     public function viewblogS(){

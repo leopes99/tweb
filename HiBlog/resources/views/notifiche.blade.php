@@ -54,5 +54,23 @@
       </div>
     <br><br>
    @endif
+   
+   <div><h2 id="scritta-h2"> Altre notifiche: <br></div>
+      @if(!empty($notifiche))
+      @foreach ($notifiche as $notifica)
+       @if($notifica->tipologia_notifica == "RimozionePost")
+        <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+        <p> Il tuo post: " {{$notifica->contenuto_post}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
+       @endif
+       @if($notifica->tipologia_notifica == "CreazionePost")
+        <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+        <p> E' stato pubblicato un nuovo post nel <a href="{{ route('vediblog',['BlogId'=>$notifica->id_blog]) }}">seguente blog</a> in data: {{$notifica->created_at}}</p> <br>
+       @endif
+       @if($notifica->tipologia_notifica == "RimozioneBlog")
+        <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+        <p> Il tuo blog: " {{$notifica->nome_blog}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
+       @endif
+      @endforeach
+      @endif
 </div>   
 @endsection

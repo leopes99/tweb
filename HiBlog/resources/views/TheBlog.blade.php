@@ -12,7 +12,7 @@
 <div class="container"> <br>    
     <h4>In questa pagina puoi navigare nel blog, visualizzarne e scriverne i contenuti. Rispetta sempre il regolamento situato nell' Homepage del sito.  </h4>
     
-    <center><h1 id='blog-titolo'>{{$ThisBlog[0]->nome}}</h1>
+    <center><h1 id='blog-titolo'>{{$ThisBlog[0]->nomeblog}}</h1>
         <img id="blog-immagine" src="images/{{$ThisBlog[0]->immagine}}"><br><br>
     
             <p id="blogcard4">Tema: <b>{{$ThisBlog[0]->tema}}</b><p>
@@ -26,7 +26,7 @@
     <row>
         <center><button class="button-7" role="button" OnClick="mostra(name)" name="newpostDiv">Nuovo POST</button></center><br>
 
-        <div class ="newpostDiv" id='newpostDiv'><center>
+        <div style="display:none;" class ="newpostDiv" id='newpostDiv'><center>
                 {{ Form::open(array('route' => "creaPost", 'class' => 'contact-form' ,'enctype' =>"multipart/form-data")) }}
 
                 <div id="Contenitore-AddPost">
