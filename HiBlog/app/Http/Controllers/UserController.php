@@ -166,7 +166,17 @@ class userController extends Controller {
         $id = Auth::user()->id;
         DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $request->idOther, $id]);
         DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $id, $request->idOther]);
-        return view('amici');
+        
+        $utenti = new Utenti;
+        $amici=$utenti->getAmici($request);
+        
+        
+        if(!empty($amici)){
+            $numero_amici = count($amici);
+            return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
+        }else{
+            return view('amici', ['amici' => ""]);
+        }
     }
 
     public function viewblogS(){
