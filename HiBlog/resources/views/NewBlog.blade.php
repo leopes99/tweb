@@ -20,10 +20,10 @@
                       <div class="form-group ">
                         <div class="input-group ">
                           
-                            <p>Nome del blog: </p> {{ Form::text('nome', '', ['class' => 'input-blog', 'id' => 'nome']) }}
-                            @if ($errors->first('nome'))
+                            <p>Nome del blog: </p> {{ Form::text('nomeblog', '', ['class' => 'input-blog', 'id' => 'nomeblog']) }}
+                            @if ($errors->first('nomeblog'))
                             <ul id="errore">
-                                @foreach ($errors->get('nome') as $message)
+                                @foreach ($errors->get('nomeblog') as $message)
                                 <li>{{ $message }}</li>
                                 @endforeach
                             </ul>
