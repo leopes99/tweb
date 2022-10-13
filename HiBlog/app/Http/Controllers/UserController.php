@@ -128,10 +128,10 @@ class userController extends Controller {
         
         foreach($richieste as $richiesta){
          if($richiesta->id_ricevente_amicizia == $id){
-               $query2 = "SELECT * FROM users INNER JOIN amicizie ON amicizie.id_richiedente_amicizia = users.id WHERE id_ricevente_amicizia = $id";
-                $richiesteRicevute[] = DB::select($query2);
-            }
-          }
+               $query2 = "SELECT * FROM users INNER JOIN amicizie ON amicizie.id_richiedente_amicizia = users.id WHERE id_ricevente_amicizia = $richiesta->id_ricevente_amicizia";
+              $richiesteRicevute[] = DB::select($query2);
+            } 
+          } 
           
         $query3 = "select * from notifiche where id_destinatario = $id";
         $notifiche = DB::select($query3);
