@@ -26,6 +26,10 @@
  
   Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
 
+  //download della documentazione
+  Route::get('/download', function () {
+    return response()->download('doc/Documentazione_progetto.pdf');
+  })->name('download');
 
  // ROUTES In comune tra utenti loggati
 

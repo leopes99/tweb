@@ -17,16 +17,18 @@
     <br>
     
 <!-- inizio notifiche section -->
-<div><h2 id="scritta-h2"> Richieste d'amicizia ricevute: <br> Clicca su un nome per visualizzare maggiori informazioni</h2> </div><br>
-    @if(!empty($richiesteRicevute))
+<div><h2 id="scritta-h2"> Richieste d'amicizia ricevute: <br><h4> Clicca su un nome per visualizzare maggiori informazioni</h4></h2> </div><br>
+
+@if(!empty($richiesteRicevute))
       @foreach ($richiesteRicevute as $richiesta)
+        
            <div class="row">
-               <a id="elenco" OnClick="mostra(name)" name="profileDiv">{{ $richiesta[0]->nome }} {{ $richiesta[0]->cognome }} </a><br></span>
-            <a href="{{route('accettaRichiesta',['id'=>$richiesta[0]->AmiciziaId])}}"> ✅ </a>
+               <a id="elenco" OnClick="mostra(name)" name="profileDiv{{$richiesta[0]->AmiciziaId}}">{{ $richiesta[0]->nome }} {{ $richiesta[0]->cognome }} </a><br></span>
+               <a href="{{route('accettaRichiesta',['id'=>$richiesta[0]->AmiciziaId])}}"> ✅ </a> 
             <a href="{{route('eliminaRichiesta',['id'=>$richiesta[0]->AmiciziaId])}}"> ❌ </a>
            </div>
         <br>
-        <div style="display:none;" class ="profileDiv" id='profileDiv'>
+        <div style="display:none;" class ="profileDiv" id='profileDiv{{$richiesta[0]->AmiciziaId}}'>
             <div class="row py-2">
                 <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Username</div>
                 <div class="col-12 col-md-8 col-xl-9 dd">{{$richiesta[0]->username}}</div>
@@ -46,6 +48,7 @@
         </div>
         <br>
       @endforeach
+      
     @else
       <div class="col-sm-6 col-md-4">
         <div class='detail-box'>
@@ -54,7 +57,7 @@
       </div>
     <br><br>
    @endif
-   
+   <hr id="blog-riga">
    <div><h2 id="scritta-h2"> Altre notifiche: <br></div>
       @if(!empty($notifiche))
       @foreach ($notifiche as $notifica)

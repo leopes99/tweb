@@ -1,4 +1,4 @@
-@extends('layouts.homepageLayout')
+    @extends('layouts.homepageLayout')
 @section('title', 'Gestione Blog')
 @section('BlogControl')
 <script src="{{ asset('/js/blog.js') }}"></script>
