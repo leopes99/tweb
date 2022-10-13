@@ -23,25 +23,25 @@
       @foreach ($richiesteRicevute as $richiesta)
         
            <div class="row">
-               <a id="elenco" OnClick="mostra(name)" name="profileDiv{{$richiesta[0]->AmiciziaId}}">{{ $richiesta[0]->nome }} {{ $richiesta[0]->cognome }} </a><br></span>
-               <a href="{{route('accettaRichiesta',['id'=>$richiesta[0]->AmiciziaId])}}"> ✅ </a> 
-            <a href="{{route('eliminaRichiesta',['id'=>$richiesta[0]->AmiciziaId])}}"> ❌ </a>
+               <a id="elenco" OnClick="mostra(name)" name="profileDiv{{$richiesta->AmiciziaId}}">{{ $richiesta->nome }} {{ $richiesta->cognome }} </a><br></span>
+               <a href="{{route('accettaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ✅ </a> 
+            <a href="{{route('eliminaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ❌ </a>
            </div>
         <br>
-        <div style="display:none;" class ="profileDiv" id='profileDiv{{$richiesta[0]->AmiciziaId}}'>
+        <div style="display:none;" class ="profileDiv" id='profileDiv{{$richiesta->AmiciziaId}}'>
             <div class="row py-2">
                 <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Username</div>
-                <div class="col-12 col-md-8 col-xl-9 dd">{{$richiesta[0]->username}}</div>
+                <div class="col-12 col-md-8 col-xl-9 dd">{{$richiesta->username}}</div>
 
             </div>
             <div class="row py-2">
                 <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Genere</div>
-                <div class="col-12 col-md-8 col-xl-9 dd">{{$richiesta[0]->genere}}</div>
+                <div class="col-12 col-md-8 col-xl-9 dd">{{$richiesta->genere}}</div>
 
             </div>
             <div class="row py-2">
                 <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt">Data di nascita</div>
-                <div class="col-12 col-md-8 col-xl-9 dd">{{$richiesta[0]->data_nascita}}</div>
+                <div class="col-12 col-md-8 col-xl-9 dd">{{$richiesta->data_nascita}}</div>
 
             </div>
             <hr>
