@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
-class Utenti {
+class Utenti  {
 
    
     
@@ -143,6 +143,6 @@ class Utenti {
 
 }
 
-   
+  
 
 }

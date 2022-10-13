@@ -72,7 +72,7 @@
    
    Route::post('creaBlog', 'UserController@CreateBlog' ) -> name('creaBlog');
    
-  
+   Route::get('vediBlogAmici', 'UserController@vediBlogAmici' ) -> name("vediBlogAmici");
    
    Route::post('creaPost', 'UserController@CreatePost' ) -> name('creaPost');
    

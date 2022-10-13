@@ -58,6 +58,9 @@ a {
      transition: all .3s ease-in-out;
 }
 
+#blogAmico{color:blue;}
+#blogAmico:hover{font-size:22px;font-weight: bold;}
+
 #scritta-slider{
     margin-bottom:110px;
     color:white;

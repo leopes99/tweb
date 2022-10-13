@@ -45,6 +45,7 @@
                         @yield('ModifyStaff')
                         @yield('Stats')
                         @yield('ProfileStats')
+                        @yield('ListOfFriendsBlogs')
                     </div>                
             </div>
            

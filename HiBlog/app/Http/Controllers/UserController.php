@@ -290,6 +290,24 @@ class userController extends Controller {
         return view('TheBlog', ['ThisBlog' => $Blog, 'Posts' => $postNelBlog, 'numero_post'=>$numero_post]);
     }
     
+    
+    public function vediBlogAmici(Request $request){
+       $utente = $request->idAmico;
+        $usernameAmico = $request->usernameAmico;
+        $blog = new Blogs;
+        $ListaBlogs=$blog->getBlogs2($utente);
+        
+        if(!empty($ListaBlogs)){
+            $numero_blog = count($ListaBlogs);
+            
+            return view('ListOfFriendsBlogs', ['blogAmico' => $ListaBlogs, 'numero_blog'=>$numero_blog , 'usernameAmico' => $usernameAmico]);
+        }else{
+            return view('ListOfFriendsBlogs', ['blogAmico' => "" , 'numero_blog'=>"", 'usernameAmico'=>$usernameAmico]);
+        }
+    }
+    
+   
+    
 }
 
 
