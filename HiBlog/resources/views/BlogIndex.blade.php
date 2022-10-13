@@ -30,7 +30,7 @@
            <p id="blogcard4">Descrizione: {{$blog[0]->descrizione}}<p>
            <br></div>
 
-                <a id="blogcard5"  href="{{ route('cancella',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
+                <a id="blogcard5" onclick = "return confirm('Sicuro di voler eliminare il blog?')" href="{{ route('cancella',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
             
                 
            <!-- <button onclick='eliminaBlog({!!$blog[0]->BlogId!!})'>Codio </button> -->
