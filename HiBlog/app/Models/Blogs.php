@@ -62,4 +62,20 @@ class Blogs extends Model
         DB::insert($query);
     }
 
+    public function getBlogs2($utente) {
+            $query = "SELECT * FROM blog ";
+            $IdUtenteLoggato = $utente;
+
+            $TabellaBlog = DB::select($query);
+            foreach ($TabellaBlog as $blogSingolo) {
+
+                if ($blogSingolo->user_id == $IdUtenteLoggato) {
+                    $query2 = "SELECT * FROM blog WHERE BlogId = $blogSingolo->BlogId";
+                     $blogtot[]=DB::select($query2);
+                }
+            }
+            if(!empty($blogtot)){return $blogtot;}
+                
+        }
+    
 }
