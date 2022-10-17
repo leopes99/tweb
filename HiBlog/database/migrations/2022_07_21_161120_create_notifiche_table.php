@@ -15,16 +15,19 @@ class CreateNotificheTable extends Migration
     {
         Schema::create('notifiche', function (Blueprint $table) {
           $table->bigIncrements('NotificaId');
-            $table->unsignedBigInteger('id_destinatario');
+            $table->unsignedBigInteger('id_destinatario')->nullable();
             $table->foreign('id_destinatario')->references('id')->on('users');
-            $table->set('tipologia_notifica', ['CreazionePost','RimozionePost','RimozioneBlog']);
+            $table->unsignedBigInteger('id_mittente')->nullable();
+            $table->foreign('id_mittente')->references('id')->on('users');
+            $table->unsignedBigInteger('id_blog')->nullable();
+            $table->set('tipologia_notifica', ['CreazionePost','RimozionePost','RimozioneBlog', 'RimozioneAmico']);
             
             
             $table->string('nome_blog')->nullable();
             
             $table->string('contenuto_post')->nullable();
             
-            $table->string('motivo_cancellazione');
+            $table->string('motivo_cancellazione')->nullable();;
             $table->timestamps();
         });
     }

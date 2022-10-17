@@ -27,7 +27,7 @@
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <h3 class="h2 mr-auto">{{$utente[0]->username}}</h3> 
                                                         <a href="{{route('vediBlogAmici',["idAmico"=>$utente[0]->id , "usernameAmico"=>$utente[0]->username])}}" id="pulsanteVediBlog" style="background-color:#00FF00;">Visualizza blog</a> 
-                                                        <a onclick= "return confirm('Sicuro di voler rimuovere questo amico?')" href="{{route('eliminaAmicizia',['idOther'=>$utente[0]->id, 'id'=>Auth::user()->id])}}" id="pulsanteVediBlog">Rimuovi amico </a>
+                                                        <a href="{{route('eliminaAmicizia',['idOther'=>$utente[0]->id, 'id'=>Auth::user()->id])}}" id="pulsanteVediBlog">Rimuovi amico </a>
                                                     </div>
                                                     <div class="account-info">
                                                         <div class="row py-2">

@@ -132,20 +132,16 @@ class userController extends Controller {
               $richiesteRicevute = DB::select($query2);
             } 
           } 
-        $query3 = "select * from notifiche where id_destinatario = $id";
+        $query3 = "SELECT * FROM notifiche INNER JOIN users ON notifiche.id_mittente = users.id WHERE id_destinatario = $id";
         $notifiche = DB::select($query3);
         
-        #$query4 = "SELECT * FROM notifiche ";
-                #INNER JOIN blog ON notifiche.id_blog = blog.BlogId WHERE id_destinatario = $id
-        $notificheRicevute = DB::select($query3);
-          
-          #echo '<pre>'; print_r($notificheRicevute); echo '</pre>';
+        
       if(!empty($richiesteRicevute) && !empty($notifiche)){
-        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notificheRicevute]);
+        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche]);
       }elseif(!empty($richiesteRicevute) && empty($notifiche)){
           return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '']);
       }elseif(empty($richiesteRicevute) && !empty($notifiche)){
-          return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notificheRicevute]);
+          return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notifiche]);
       }else{
         return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '']);
       }
@@ -162,9 +158,14 @@ class userController extends Controller {
     }
     
     public function eliminaAmicizia(Request $request) {
-        $id = Auth::user()->id;
-        DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $request->idOther, $id]);
-        DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $id, $request->idOther]);
+        $id = $request->id;
+        $idOther = $request->idOther;
+        
+        $query = "INSERT INTO notifiche ( id_destinatario, id_mittente, id_blog, tipologia_notifica) VALUES ( $idOther, $id, null, 'RimozioneAmico');";
+        DB::insert($query);
+        
+        DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $idOther, $id]);
+        DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $id, $idOther]);
         
         $utenti = new Utenti;
         $amici=$utenti->getAmici($request);
@@ -172,9 +173,9 @@ class userController extends Controller {
         
         if(!empty($amici)){
             $numero_amici = count($amici);
-            return view('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
+            return redirect()->route('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
         }else{
-            return view('amici', ['amici' => ""]);
+            return redirect()->route('amici', ['amici' => ""]);
         }
     }
 
@@ -274,14 +275,35 @@ class userController extends Controller {
         $post = new Posts;
         $post->CreatePost($request);
         
-        
-        
-         $query = "select * from blog where BlogId='".$request->BlogId."'";
+        $query = "select * from blog where BlogId='".$request->BlogId."'";
         $Blog = DB::select($query);
         
         $IdBlog = $request->BlogId;
+        $IdProprietario = $Blog[0]->user_id;
+        $nomeBlog = $Blog[0]->nomeblog;
+        date_default_timezone_set('Europe/Rome');
+        $DataOra = date('Y-m-d H:i:s');
         
         
+        
+        $query1 = "select id_ricevente_amicizia from amicizie where accettata='1' and id_richiedente_amicizia = $IdProprietario";
+        $query2 = "select id_richiedente_amicizia from amicizie where accettata='1' and id_ricevente_amicizia = $IdProprietario";
+
+        $idamici1 = DB::select($query1);
+        foreach ($idamici1 as $idamico1) {
+            $idamici[] = $idamico1->id_ricevente_amicizia;
+        }
+
+        $idamici2 = DB::select($query2);
+        foreach ($idamici2 as $idamico2) {
+            $idamici[] = $idamico2->id_richiedente_amicizia;
+        }
+        
+        foreach($idamici as $idamico){
+            $query = "INSERT INTO notifiche ( id_destinatario, id_mittente, id_blog, tipologia_notifica, nome_blog, created_at) VALUES ( $idamico, $IdProprietario, $IdBlog, 'CreazionePost', '$nomeBlog', '$DataOra');";
+        DB::insert($query);
+        }
+        #echo '<pre>'; print_r($IdBlog); echo '</pre>';
         
         $post2 = new Posts;
         $postNelBlog=$post2->getAllPost($IdBlog);
