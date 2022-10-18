@@ -173,9 +173,9 @@ class userController extends Controller {
         
         if(!empty($amici)){
             $numero_amici = count($amici);
-            return redirect()->route('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici]);
+            return redirect()->route('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici, 'id'=>Auth::user()->id]);
         }else{
-            return redirect()->route('amici', ['amici' => ""]);
+            return redirect()->route('amici', ['amici' => "", 'id'=>Auth::user()->id]);
         }
     }
 
