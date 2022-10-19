@@ -121,35 +121,43 @@ class userController extends Controller {
 
     }
     
-    public function viewNotifiche(Request $request) {
+    public function viewNotifiche() {
         $id = Auth::user()->id;
         $query = "select * from amicizie where accettata='0' ";
         $richieste = DB::select($query);
         
         foreach($richieste as $richiesta){
          if($richiesta->id_ricevente_amicizia == $id){
-               $query2 = "SELECT * FROM users INNER JOIN amicizie ON amicizie.id_richiedente_amicizia = users.id WHERE id_ricevente_amicizia = $richiesta->id_ricevente_amicizia";
+               $query2 = "SELECT * FROM users INNER JOIN amicizie ON amicizie.id_richiedente_amicizia = users.id WHERE accettata='0'";
               $richiesteRicevute = DB::select($query2);
             } 
           } 
+          echo '<pre>'; print_r($richieste); echo '</pre>';
         $query3 = "SELECT * FROM notifiche INNER JOIN users ON notifiche.id_mittente = users.id WHERE id_destinatario = $id";
-        $notifiche = DB::select($query3);
+        $query4 = "SELECT * FROM notifiche WHERE id_destinatario = $id";
+        $notificheRimAmico = DB::select($query3);
+        $notifiche= DB::select($query4);
         
-        
-      if(!empty($richiesteRicevute) && !empty($notifiche)){
-        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche]);
-      }elseif(!empty($richiesteRicevute) && empty($notifiche)){
-          return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '']);
-      }elseif(empty($richiesteRicevute) && !empty($notifiche)){
-          return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notifiche]);
-      }else{
-        return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '']);
+      if(!empty($richiesteRicevute) && !empty($notifiche) && !empty($notificheRimAmico)){
+        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche, 'notificheRimAmico' => $notificheRimAmico]);
+      }elseif(!empty($richiesteRicevute) && empty($notifiche) && !empty($notificheRimAmico)){
+          return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '', 'notificheRimAmico' => $notificheRimAmico]);
+      }elseif(empty($richiesteRicevute) && !empty($notifiche) && !empty($notificheRimAmico)){
+          return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notifiche, 'notificheRimAmico' => $notificheRimAmico]);
+      }elseif(empty($richiesteRicevute) && empty($notifiche) && !empty($notificheRimAmico)){
+        return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '', 'notificheRimAmico' => $notificheRimAmico]);
+      }elseif(!empty($richiesteRicevute) && empty($notifiche) && empty($notificheRimAmico)){
+        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '', 'notificheRimAmico' => '']);
+      }elseif(!empty($richiesteRicevute) && !empty($notifiche) && empty($notificheRimAmico)){
+        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche, 'notificheRimAmico' => '']);
+      }if(empty($richiesteRicevute) && empty($notifiche) && empty($notificheRimAmico)){
+        return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '', 'notificheRimAmico' => '']);
       }
     }
     
     public function accettaRichiesta(Request $request) {
          DB::update('update amicizie set accettata =? where AmiciziaId = ?',[1,$request->id]);
-         return view('notifiche');
+         return redirect()->route('notifiche');
     }
   
     public function eliminaRichiesta(Request $request) {
@@ -298,10 +306,11 @@ class userController extends Controller {
         foreach ($idamici2 as $idamico2) {
             $idamici[] = $idamico2->id_richiedente_amicizia;
         }
-        
-        foreach($idamici as $idamico){
-            $query = "INSERT INTO notifiche ( id_destinatario, id_mittente, id_blog, tipologia_notifica, nome_blog, created_at) VALUES ( $idamico, $IdProprietario, $IdBlog, 'CreazionePost', '$nomeBlog', '$DataOra');";
-        DB::insert($query);
+        if(!empty($idamici)){
+            foreach($idamici as $idamico){
+                $query = "INSERT INTO notifiche ( id_destinatario, id_mittente, id_blog, tipologia_notifica, nome_blog, created_at) VALUES ( $idamico, $IdProprietario, $IdBlog, 'CreazionePost', '$nomeBlog', '$DataOra');";
+            DB::insert($query);
+            }
         }
         #echo '<pre>'; print_r($IdBlog); echo '</pre>';
         

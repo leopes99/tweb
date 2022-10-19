@@ -17,13 +17,13 @@
     <br>
     
 <!-- inizio notifiche section -->
-<div><h2 id="scritta-h2"> Richieste d'amicizia ricevute: <br><h4> Clicca su un nome per visualizzare maggiori informazioni</h4></h2> </div><br>
+<div><h2 id="scritta-h2"> Richieste d'amicizia ricevute: <br><br><h4> Clicca su un nome per visualizzare maggiori informazioni</h4></h2> </div><br>
 
 @if(!empty($richiesteRicevute))
       @foreach ($richiesteRicevute as $richiesta)
         
            <div class="row">
-               <a id="elenco" OnClick="mostra(name)" name="profileDiv{{$richiesta->AmiciziaId}}">{{ $richiesta->username }}</a><br></span>
+               <a id="elenco" OnClick="mostra(name)" name="profileDiv{{$richiesta->AmiciziaId}}">{{ $richiesta->nome }} {{ $richiesta->cognome }}</a> <br> <a>ti ha inviato una richiesta di amicizia</a></span>
                <a href="{{route('accettaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ✅ </a> 
             <a href="{{route('eliminaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ❌ </a>
            </div>
@@ -58,26 +58,36 @@
     <br><br>
    @endif
    <hr id="blog-riga">
-   <div><h2 id="scritta-h2"> Altre notifiche: <br></div>
+   <div><h2 id="scritta-h2"> Altre notifiche: <br><br></div>
       @if(!empty($notifiche))
-      @foreach ($notifiche as $notifica)
-       @if($notifica->tipologia_notifica == "RimozionePost")
-        <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
-        <p> Il tuo post: " {{$notifica->contenuto_post}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
-       @endif
-       @if($notifica->tipologia_notifica == "CreazionePost")
-        <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
-        <p> E' stato pubblicato un nuovo post nel blog: <a href="{{ route('vediblog',['BlogId'=>$notifica->id_blog]) }}">{{$notifica->nome_blog}}</a> in data: {{$notifica->created_at}}</p> <br>
-       @endif
-       @if($notifica->tipologia_notifica == "RimozioneBlog")
-        <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
-        <p> Il tuo blog: " {{$notifica->nome_blog}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
-       @endif
-       @if($notifica->tipologia_notifica == "RimozioneAmico")
-        <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
-        <p> {{$notifica->username}} ti ha rimosso dalla sua lista amici. </p> <br>
-       @endif
-      @endforeach
+        @foreach ($notifiche as $notifica)
+         @if($notifica->tipologia_notifica == "RimozionePost")
+          <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+          <p> Il tuo post: " {{$notifica->contenuto_post}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
+         @endif
+         @if($notifica->tipologia_notifica == "CreazionePost")
+          <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+          <p> E' stato pubblicato un nuovo post nel blog: <a href="{{ route('vediblog',['BlogId'=>$notifica->id_blog]) }}">{{$notifica->nome_blog}}</a> in data: {{$notifica->created_at}}</p> <br>
+         @endif
+         @if($notifica->tipologia_notifica == "RimozioneBlog")
+          <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+          <p> Il tuo blog: " {{$notifica->nome_blog}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
+         @endif
+        @endforeach
       @endif
-</div>   
+      @if(!empty($notificheRimAmico))
+        @foreach($notificheRimAmico as $notifica)
+          <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+          <p> {{$notifica->username}} ti ha rimosso dalla sua lista amici. </p> <br>
+        @endforeach
+      @endif
+      @if(empty($notificheRimAmico) and empty($notifiche))
+        <div class="col-sm-6 col-md-4">
+          <div class='detail-box'>
+            <h4>Non hai ricevuto notifiche.</h4>
+          </div>
+        </div>
+      @endif
+    <br><br>
+</div> <br>
 @endsection
