@@ -9,9 +9,6 @@ $(function () {
 	/* Preloader
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
-	setTimeout(function () {
-		$('.loader_bg').fadeToggle();
-	}, 1500);
 
 
 	/* Mouseover
@@ -90,8 +87,8 @@ $(function () {
 	/* Product slider 
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 	// optional
-	$('#blogCarousel').carousel({
-		interval: 1000
+	$('#myCarousel').carousel({
+		interval: 2000
 	});
 
 

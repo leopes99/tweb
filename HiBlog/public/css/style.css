@@ -61,6 +61,10 @@ a {
 #blogAmico{color:blue;}
 #blogAmico:hover{font-size:22px;font-weight: bold;}
 
+#motivazioneBlog{max-width:250px;max-height:150px;}
+
+#motivazione{max-width:500px;max-height:150px;}
+
 #scritta-slider{
     margin-bottom:110px;
     color:white;
@@ -249,12 +253,11 @@ background-color:#E9F4FF;}
 #blogcard1{
     width:250px;
     height:200px;
-    margin-right:40px;
-    margin-left:10px;
+    
     border: 1px solid #19B4FF;
 }
 
-#blogcard2{margin-top:10px;
+#blogcard2{
 }
 
 #blogcard3{font-family: "Arial Black", Gadget, sans-serif;
@@ -273,10 +276,10 @@ word-spacing: 2px;
 color: #0E426C;}
 
 #blogcard5{
-    position:absolute;
+    
     border: 5px inset #8CC6FF;
     background-color: #C6E3FF;
-    right:215px;  
+   
     
     font-size: 15px;
 }
@@ -285,10 +288,10 @@ color: #0E426C;}
 }
 
 #blogcard5-2{
-    position:absolute;
+    
     border: 5px inset #8CC6FF;
     background-color: #C6E3FF;
-    right:215px;  
+     
     
     font-size: 15px;
 }

@@ -41,26 +41,33 @@
     
     @if(!empty($Posts))
         @foreach ($Posts as $post)
+        
         <div id="ContenitorePost">
+            <br>
+            <div class="row">
+            <div class="col-10">
             <div id="contenutoPost">
+                
         <p><b>Autore: {{$post[0]->nome}} 
                 {{$post[0]->cognome}} </b></p>
         
         {{$post[0]->contenuto_post}}<br>
         <i>{{$post[0]->created_at}}</i>
-        
+            </div></div>
         @can('isStaff')
-        <a id="blogcard5-2" OnClick="mostra(name)" name="motivazionePost{{$post[0]->PostId}}">Cancella POST</a>
-        <br><br></div> </div><br>
-
-        <div class ="motivazionePost" id='motivazionePost{{$post[0]->PostId}}' style="display:none;">
+        <div class="col-2">
+            <a id="blogcard5-2" OnClick="mostra(name)" name="motivazionePost{{$post[0]->PostId}}">Cancella POST</a>
+            </div>
+        </div> 
+            
+           <div class ="motivazionePost" id='motivazionePost{{$post[0]->PostId}}' style="display:none;">
             {{ Form::open(array('route' => 'cancella3s','PostId'=> $post[0]->PostId, 'class' => 'contact-form' ,'enctype' =>"multipart/form-data")) }}
 
             <div id="Contenitore-AddPost">
                 <div class="form-group ">
                     <div class="input-group ">
 
-                        {{ Form::text('PostId', $post[0]->PostId, ['class' => 'input-post', 'id' => 'PostId']) }}
+                        {{ Form::text('PostId', $post[0]->PostId, ['class' => 'input-post', 'id' => 'PostId' , 'style' => 'display:none;']) }}
 
                         {{ Form::textarea('motivazione', '', ['class' => 'input-post', 'id' => 'motivazione', 'required' => 'true', 'placeholder'=>"Inserisci una motivazione all'eliminazione del post"]) }}
                         @if ($errors->first('motivazione'))
@@ -73,10 +80,20 @@
                     </div>
                 </div>
             </div>
+            <div style="margin-left:15px">
             {{ Form::submit('Elimina post', ['class' => 'button-7']) }}
             {{ Form::close() }}
+            </div>
         </div>
-        @endcan
+            <br>
+        @endcan 
+            
+        </div>
+        
+        <br>@endforeach 
+        
+            </div>
+        
         @can('isAdmin')
         <a id="blogcard5-2" OnClick="mostra(name)" name="motivazionePost{{$post[0]->PostId}}">Cancella POST</a>
         <br><br></div> </div><br>
@@ -105,8 +122,11 @@
             {{ Form::close() }}
         </div>
         @endcan
-        @endforeach 
+        
+        
+        
     
+        
      @else
            <div class="col-sm-10 col-md-12"><br><br><br>
             <center>

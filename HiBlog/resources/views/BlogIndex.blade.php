@@ -23,21 +23,31 @@
         @foreach ($blogMiei as $blog)
         
         <div class="row" id="blogcard">
-            <img id="blogcard1" src="images/{{$blog[0]->immagine}}"><div id="BlogCard2"><a href="{{ route('vediblog',['BlogId'=>$blog[0]->BlogId]) }}" id="blogcard3">{{$blog[0]->nomeblog}}</a>
+            <div class="col-4">
+            <img id="blogcard1" src="images/{{$blog[0]->immagine}}">
+            </div>  
+            <div class="col-6">
+            <div id="BlogCard2">
+              
+                <a href="{{ route('vediblog',['BlogId'=>$blog[0]->BlogId]) }}" id="blogcard3">{{$blog[0]->nomeblog}}</a>
                 <br>
                 <p id="blogcard4">Tema: <b>{{$blog[0]->tema}}</b><p>
            <br>   
            <p id="blogcard4">Descrizione: {{$blog[0]->descrizione}}<p>
-           <br></div>
+           <br>
+            </div>   </div>
+            <div class="col-2">
+            <a id="blogcard5" onclick = "return confirm('Sicuro di voler eliminare il blog?')" href="{{ route('cancella',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
+            </div></div>
 
-                <a id="blogcard5" onclick = "return confirm('Sicuro di voler eliminare il blog?')" href="{{ route('cancella',['BlogId'=>$blog[0]->BlogId]) }}">Cancella BLOG</a>
-            
                 
-           <!-- <button onclick='eliminaBlog({!!$blog[0]->BlogId!!})'>Codio </button> -->
+            
+            @endforeach    
+           
         </div>
         
         
-        @endforeach
+        
      @else
            <div class="col-sm-8 col-md-8"><br><br><br>
             <div class='detail-box'>
