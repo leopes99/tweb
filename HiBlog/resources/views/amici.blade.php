@@ -10,9 +10,9 @@
     </div>
 </div>
 <div class="container"> <br>    
-    <h4>In questa pagina puoi visualizzare il tuo gruppo di amici. Cercane dei nuovi con l'apposito tasto! </h4>
+    <h4>In questa pagina puoi visualizzare il tuo gruppo di amici. Cercane dei nuovi con l'apposito tasto! </h4><br>
     
-    <center><button id="pulsante2" ><a href="{{route('viewRicerca')}}" id="linkpulsante">Cerca nuove amicizie</a></button></center>
+    <center><a href="{{route('viewRicerca')}}" id="pulsante2" style="color:white; padding:13px;">Cerca nuove amicizie</a></center><br>
     <center>
      @if(!empty($numero_amici))
      <div class="col-12 col-md-4 col-xl-3 mb-2 mb-md-0 dt"><h2 id="scritta-h2"> Elenco amici({{$numero_amici}}):</h2> </div><br>
