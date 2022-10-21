@@ -132,27 +132,29 @@ class userController extends Controller {
               $richiesteRicevute = DB::select($query2);
             } 
           } 
-          //echo '<pre>'; print_r($richieste); echo '</pre>';
+          
         $query3 = "SELECT * FROM notifiche INNER JOIN users ON notifiche.id_mittente = users.id WHERE id_destinatario = $id";
         $query4 = "SELECT * FROM notifiche WHERE id_destinatario = $id";
         $notificheRimAmico = DB::select($query3);
         $notifiche= DB::select($query4);
         
-      if(!empty($richiesteRicevute) && !empty($notifiche) && !empty($notificheRimAmico)){
-        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche, 'notificheRimAmico' => $notificheRimAmico]);
-      }elseif(!empty($richiesteRicevute) && empty($notifiche) && !empty($notificheRimAmico)){
-          return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '', 'notificheRimAmico' => $notificheRimAmico]);
-      }elseif(empty($richiesteRicevute) && !empty($notifiche) && !empty($notificheRimAmico)){
-          return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notifiche, 'notificheRimAmico' => $notificheRimAmico]);
-      }elseif(empty($richiesteRicevute) && empty($notifiche) && !empty($notificheRimAmico)){
-        return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '', 'notificheRimAmico' => $notificheRimAmico]);
-      }elseif(!empty($richiesteRicevute) && empty($notifiche) && empty($notificheRimAmico)){
-        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '', 'notificheRimAmico' => '']);
-      }elseif(!empty($richiesteRicevute) && !empty($notifiche) && empty($notificheRimAmico)){
-        return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche, 'notificheRimAmico' => '']);
-      }if(empty($richiesteRicevute) && empty($notifiche) && empty($notificheRimAmico)){
-        return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '', 'notificheRimAmico' => '']);
-      }
+      if (!empty($richiesteRicevute) && !empty($notifiche) && !empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche, 'notificheRimAmico' => $notificheRimAmico]);
+        } elseif (!empty($richiesteRicevute) && empty($notifiche) && !empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '', 'notificheRimAmico' => $notificheRimAmico]);
+        } elseif (empty($richiesteRicevute) && !empty($notifiche) && !empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notifiche, 'notificheRimAmico' => $notificheRimAmico]);
+        } elseif (empty($richiesteRicevute) && empty($notifiche) && !empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '', 'notificheRimAmico' => $notificheRimAmico]);
+        } elseif (!empty($richiesteRicevute) && empty($notifiche) && empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => '', 'notificheRimAmico' => '']);
+        } elseif (!empty($richiesteRicevute) && !empty($notifiche) && empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => $richiesteRicevute, 'notifiche' => $notifiche, 'notificheRimAmico' => '']);
+        }if (empty($richiesteRicevute) && empty($notifiche) && empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => '', 'notificheRimAmico' => '']);
+        } elseif (empty($richiesteRicevute) && !empty($notifiche) && empty($notificheRimAmico)) {
+            return view('notifiche', ['richiesteRicevute' => '', 'notifiche' => $notifiche, 'notificheRimAmico' => '']);
+        }
     }
     
     public function accettaRichiesta(Request $request) {

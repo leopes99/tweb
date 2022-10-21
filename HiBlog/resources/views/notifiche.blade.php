@@ -61,10 +61,10 @@
    <div><h2 id="scritta-h2"> Altre notifiche: <br><br></div>
       @if(!empty($notifiche))
         @foreach ($notifiche as $notifica)
-         @if($notifica->tipologia_notifica == "RimozionePost")
-          <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
-          <p> Il tuo post: " {{$notifica->contenuto_post}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
-         @endif
+            @if($notifica->tipologia_notifica == "RimozionePost")
+            <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+            <p> Il tuo post: " {{$notifica->contenuto_post}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
+            @endif
          @if($notifica->tipologia_notifica == "CreazionePost")
           <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
           <p> E' stato pubblicato un nuovo post nel blog: <a href="{{ route('vediblog',['BlogId'=>$notifica->id_blog]) }}">{{$notifica->nome_blog}}</a> in data: {{$notifica->created_at}}</p> <br>
@@ -74,12 +74,12 @@
           <p> Il tuo blog: " {{$notifica->nome_blog}} " è stato eliminato per il seguente motivo: {{$notifica->motivo_cancellazione}} </p> <br>
          @endif
         @endforeach
-      @endif
+      @endif      
       @if(!empty($notificheRimAmico))
         @foreach($notificheRimAmico as $notifica)
-          <p> Tipologia: {{$notifica->tipologia_notifica}} </p>
+          <p> Tipologia: {{$notifica->tipologia_notifica}}</p>
           <p> {{$notifica->username}} ti ha rimosso dalla sua lista amici. </p> <br>
-        @endforeach
+        @endforeach         
       @endif
       @if(empty($notificheRimAmico) and empty($notifiche))
         <div class="col-sm-6 col-md-4">
@@ -87,7 +87,7 @@
             <h4>Non hai ricevuto notifiche.</h4>
           </div>
         </div>
-      @endif
+      @endif      
     <br><br>
 </div> <br>
 @endsection

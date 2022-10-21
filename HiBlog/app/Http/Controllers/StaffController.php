@@ -69,13 +69,8 @@ class StaffController extends Controller
         DB::insert('insert into notifiche (id_destinatario, tipologia_notifica, nome_blog, contenuto_post, motivo_cancellazione, created_at) '
                 . 'values (?, ?, ?, ?, ?, ?)', [$idDestinatario, 'RimozioneBlog', $NomeBlog, '', $motivo, $DataOra]);
         
-        if(!empty($ListaBlogs)){
-            $numblog=count($ListaBlogs);
-            
-            return view('staff/GestBlogs', ['BlogTot' => $ListaBlogs, 'numero_blog'=>$numblog]);
-        }else{
-            return view('staff/GestBlogs', ['BlogTot' => ""]);
-        }
+       
+        return redirect()->action('StaffController@ViewAllBlogs');
     }
     
     public function VisualizzaBlog(Request $request){
@@ -116,20 +111,8 @@ class StaffController extends Controller
         $postDaCancellare=new Staff;
         $postDaCancellare->deletePost($IdPost);
         
-        $query4 = "select * from blog where BlogId = '$IdBlog' ";
-        $Blog = DB::select($query4);
-
-        $post = new Posts;
-        $postNelBlog=$post->getAllPost($IdBlog);
-        if(!empty($postNelBlog)){
-            $numero_post = count($postNelBlog);
-           
-           
-            return view('staff/BlogControl', ['ThisBlog' => $Blog, 'Posts' => $postNelBlog, 'numero_post'=>$numero_post]);
-        }else{
-            return view('staff/BlogControl', ['ThisBlog' => $Blog]);
-        }
         
+        return redirect()->route('VediGestBlogs',['BlogId'=>$IdBlog]);
     }
     
 }
