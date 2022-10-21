@@ -25,7 +25,7 @@
      @else
         <div class="col-sm-6 col-md-4">
             <div class='detail-box'>
-                <h4>Non hai ancora amici.</h4>
+                <h4>Non hai ancora amici.</h4><br><br>
             </div>
         </div>
      @endif

@@ -175,16 +175,9 @@ class userController extends Controller {
         DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $idOther, $id]);
         DB::delete('delete from amicizie where accettata = ? AND id_richiedente_amicizia = ? AND id_ricevente_amicizia =? ',[1, $id, $idOther]);
         
-        $utenti = new Utenti;
-        $amici=$utenti->getAmici($request);
+       
         
-        
-        if(!empty($amici)){
-            $numero_amici = count($amici);
-            return redirect()->route('amici', ['amici' => $amici, 'numero_amici'=>$numero_amici, 'id'=>Auth::user()->id]);
-        }else{
-            return redirect()->route('amici', ['amici' => "", 'id'=>Auth::user()->id]);
-        }
+        return redirect()->route('amici', ['id'=>Auth::user()->id]);
     }
 
     public function viewblogS(){
@@ -237,18 +230,8 @@ class userController extends Controller {
         $blog->deleteBlog($IdBlog);
         
        
-          $utente = User::find(Auth::user()->id);
-        
-        $blog2 = new Blogs;
-        $mieiBlog=$blog2->getBlogs($utente);
-        
-        if(!empty($mieiBlog)){
-            $numero_blog = count($mieiBlog);
-            
-            return view('BlogIndex', ['blogMiei' => $mieiBlog, 'numero_blog'=>$numero_blog]);
-        }else{
-            return view('BlogIndex', ['blogMiei' => ""]);
-        }
+         
+        return redirect()->action('UserController@viewblogS');
     }
     
     public function ViewCreateBlog(){
