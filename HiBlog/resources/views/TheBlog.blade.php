@@ -11,7 +11,7 @@
 </div>
 <div class="container"> <br>    
     <h4>In questa pagina puoi navigare nel blog, visualizzarne e scriverne i contenuti. Rispetta sempre il regolamento situato nell' Homepage del sito.  </h4>
-    
+     @if(isset($ThisBlog))
     <center><h1 id='blog-titolo'>{{$ThisBlog[0]->nomeblog}}</h1>
         <img id="blog-immagine" src="images/{{$ThisBlog[0]->immagine}}"><br><br>
     
@@ -19,7 +19,7 @@
            <br>   
            <p id="blogcard4">Descrizione: {{$ThisBlog[0]->descrizione}}<p>
            <br>
-    
+    @endif
     </center>
     
     <hr id='blog-riga'>

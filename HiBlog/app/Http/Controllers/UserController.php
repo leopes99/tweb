@@ -318,7 +318,7 @@ class userController extends Controller {
         $postNelBlog=$post2->getAllPost($IdBlog);
          $numero_post = count($postNelBlog);
          
-        return view('TheBlog', ['ThisBlog' => $Blog, 'Posts' => $postNelBlog, 'numero_post'=>$numero_post]);
+        return redirect()->route('vediblog', ['BlogId'=>$IdBlog]);
     }
     
     
