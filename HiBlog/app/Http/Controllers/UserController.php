@@ -264,14 +264,14 @@ class userController extends Controller {
         $blog->Create_Blog($idUtente,$request);
         
         
-         $blog2 = new Blogs;
-        $mieiBlog=$blog2->getBlogs($utente);
-         $numero_blog = count($mieiBlog);
+       //  $blog2 = new Blogs;
+       // $mieiBlog=$blog2->getBlogs($utente);
+       //  $numero_blog = count($mieiBlog);
             
           
-         return view('BlogIndex', ['blogMiei' => $mieiBlog, 'numero_blog'=>$numero_blog]);
-         
-          
+         //return view('BlogIndex', ['blogMiei' => $mieiBlog, 'numero_blog'=>$numero_blog]);
+          //return redirect()->route('BlogIndex');
+           return redirect()->action('UserController@viewblogS');
     }
     
     public function ViewCreatePost(){
