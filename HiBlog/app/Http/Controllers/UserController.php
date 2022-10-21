@@ -132,7 +132,7 @@ class userController extends Controller {
               $richiesteRicevute = DB::select($query2);
             } 
           } 
-          echo '<pre>'; print_r($richieste); echo '</pre>';
+          //echo '<pre>'; print_r($richieste); echo '</pre>';
         $query3 = "SELECT * FROM notifiche INNER JOIN users ON notifiche.id_mittente = users.id WHERE id_destinatario = $id";
         $query4 = "SELECT * FROM notifiche WHERE id_destinatario = $id";
         $notificheRimAmico = DB::select($query3);
