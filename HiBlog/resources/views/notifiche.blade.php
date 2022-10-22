@@ -76,9 +76,9 @@
         @endforeach
       @endif      
       @if(!empty($notificheRimAmico))
-        @foreach($notificheRimAmico as $notifica)
-          <p> Tipologia: {{$notifica->tipologia_notifica}}</p>
-          <p> {{$notifica->username}} ti ha rimosso dalla sua lista amici. </p> <br>
+        @foreach($notificheRimAmico as $notificaRimAmico)
+          <p> Tipologia: {{$notificaRimAmico->tipologia_notifica}}</p>
+          <p> {{$notificaRimAmico->username}} ti ha rimosso dalla sua lista amici. </p> <br>
         @endforeach         
       @endif
       @if(empty($notificheRimAmico) and empty($notifiche))
