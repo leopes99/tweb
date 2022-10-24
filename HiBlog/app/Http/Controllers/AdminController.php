@@ -50,8 +50,16 @@ class AdminController extends Controller {
     
      public function DeleteBlog(Request $request){
         
-        $IdBlog = $request->BlogId;
+       $IdBlog = $request->BlogId;
         
+        $motivo = $request->motivazioneBlog;
+        $query2 =  "select * from blog where BlogId = '$IdBlog' ";
+        $blogEliminato = DB::select($query2);
+        $idDestinatario = $blogEliminato[0]->user_id;
+        date_default_timezone_set('Europe/Rome');
+        $DataOra = date('Y-m-d H:i:s');
+        $NomeBlog = $blogEliminato[0]->nomeblog; 
+       
         $blog = new Blogs;
         
         $blog->deleteBlog($IdBlog);
@@ -59,14 +67,12 @@ class AdminController extends Controller {
         $TuttiBlog = new Staff;
         $ListaBlogs=$TuttiBlog->getAllBlogs();
         
+         DB::insert('insert into notifiche (id_destinatario, tipologia_notifica, nome_blog, contenuto_post, motivo_cancellazione, created_at) '
+                . 'values (?, ?, ?, ?, ?, ?)', [$idDestinatario, 'RimozioneBlog', $NomeBlog, '', $motivo, $DataOra]);
         
-        if(!empty($ListaBlogs)){
-            $numblog=count($ListaBlogs);
-            
-            return view('staff/GestBlogs', ['BlogTot' => $ListaBlogs, 'numero_blog'=>$numblog]);
-        }else{
-            return view('staff/GestBlogs', ['BlogTot' => ""]);
-        }
+       
+        return redirect()->action('AdminController@ViewAllBlogs');
+       
     }
     
      public function VisualizzaBlog(Request $request){
@@ -91,7 +97,7 @@ class AdminController extends Controller {
     }
  
     public function DeletePost(Request $request){
-        $IdPost = $request->PostId;
+         $IdPost = $request->PostId;
         $motivo = $request->motivazione;
         $query2 =  "select * from post where PostId = '$IdPost' ";
         $postEliminato = DB::select($query2);
@@ -101,25 +107,14 @@ class AdminController extends Controller {
         date_default_timezone_set('Europe/Rome');
         $DataOra = date('Y-m-d H:i:s');
        
-        DB::insert('insert into notifiche (id_destinatario, tipologia_notifica, id_blog, contenuto_post, motivo_cancellazione, created_at) '
-                . 'values (?, ?, ?, ?, ?, ?)', [$idDestinatario, 'RimozionePost', $IdBlog, $contenutoPost, $motivo, $DataOra]);
+        DB::insert('insert into notifiche (id_destinatario, tipologia_notifica, nome_blog,contenuto_post, motivo_cancellazione, created_at) '
+                . 'values (?, ?, ?, ?, ?, ?)', [$idDestinatario, 'RimozionePost', null, $contenutoPost, $motivo, $DataOra]);
         
         $postDaCancellare=new Staff;
         $postDaCancellare->deletePost($IdPost);
         
-        $query4 = "select * from blog where BlogId = '$IdBlog' ";
-        $Blog = DB::select($query4);
-
-        $post = new Posts;
-        $postNelBlog=$post->getAllPost($IdBlog);
-        if(!empty($postNelBlog)){
-            $numero_post = count($postNelBlog);
-           
-           
-            return view('staff/BlogControl', ['ThisBlog' => $Blog, 'Posts' => $postNelBlog, 'numero_post'=>$numero_post]);
-        }else{
-            return view('staff/BlogControl', ['ThisBlog' => $Blog]);
-        }
+        
+        return redirect()->route('VediGestBlog',['BlogId'=>$IdBlog]);
         
         
     }
@@ -151,15 +146,14 @@ class AdminController extends Controller {
         $admin = new Admin;
         $admin->NewStaff($request);
         
-         $admin = new Admin;
-        $ElencoStaff=$admin->getAllStaffs();
-         if(!empty($ElencoStaff)){
-            $numero_staff = count($ElencoStaff);
-            return view('admin/GestUtenti', [ 'staffs' => $ElencoStaff, 'numero_staff'=>$numero_staff]);
-        }else{
-            return view('admin/GestUtenti', ['staffs' => ""]);
-        }  
+         $admin2 = new Admin;
+        $ElencoStaff=$admin2->getAllStaffs();
+                    $numero_staff = count($ElencoStaff);
+
         
+       // return redirect()->action('AdminController@viewGestUtenti'); 
+                return redirect()->route('viewGestUtenti');
+
     }
     
     public function DeleteStaff(Request $request){
@@ -167,14 +161,8 @@ class AdminController extends Controller {
         $admin = new Admin;
         $admin->destroyStaff($request->id);
         
-        $admin = new Admin;
-        $ElencoStaff=$admin->getAllStaffs();
-         if(!empty($ElencoStaff)){
-            $numero_staff = count($ElencoStaff);
-            return view('admin/GestUtenti', [ 'staffs' => $ElencoStaff, 'numero_staff'=>$numero_staff]);
-        }else{
-            return view('admin/GestUtenti', ['staffs' => ""]);
-        }
+        return redirect()->route('viewGestUtenti');
+
     }
     
     public function viewEditStaff(Request $request){
@@ -190,14 +178,8 @@ class AdminController extends Controller {
          $admin->updateStaff($request);
         
        // echo '<pre>'; print_r($var); echo '</pre>';
-       $admin = new Admin;
-        $ElencoStaff=$admin->getAllStaffs();
-         if(!empty($ElencoStaff)){
-            $numero_staff = count($ElencoStaff);
-            return view('admin/GestUtenti', [ 'staffs' => $ElencoStaff, 'numero_staff'=>$numero_staff]);
-        }else{
-            return view('admin/GestUtenti', ['staffs' => ""]);
-        }
+                return redirect()->route('viewGestUtenti');
+       
     }
     
     public function viewStats(){

@@ -23,9 +23,9 @@
       @foreach ($richiesteRicevute as $richiesta)
         
            <div class="row">
-               <a id="elenco" OnClick="mostra(name)" name="profileDiv{{$richiesta->AmiciziaId}}">{{ $richiesta->nome }} {{ $richiesta->cognome }}</a> <br> <a>ti ha inviato una richiesta di amicizia</a></span>
-               <a href="{{route('accettaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ✅ </a> 
-            <a href="{{route('eliminaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ❌ </a>
+               <a id="elenco" OnClick="mostra(name)" name="profileDiv{{$richiesta->AmiciziaId}}">{{ $richiesta->nome }} {{ $richiesta->cognome }}</a>  <p id="scritta-notifiche">ti ha inviato una richiesta di amicizia</p>
+               <a id="accrifamicizia" href="{{route('accettaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ✅ </a> 
+            <a id="accrifamicizia" href="{{route('eliminaRichiesta',['id'=>$richiesta->AmiciziaId])}}"> ❌ </a>
            </div>
         <br>
         <div style="display:none;" class ="profileDiv" id='profileDiv{{$richiesta->AmiciziaId}}'>
@@ -52,7 +52,7 @@
     @else
       <div class="col-sm-6 col-md-4">
         <div class='detail-box'>
-          <h4>Non hai ricevuto richieste d'amicizia.</h4>
+          <h4 style="color:red;">Non hai ricevuto richieste d'amicizia.</h4>
         </div>
       </div>
     <br><br>
@@ -84,7 +84,7 @@
       @if(empty($notificheRimAmico) and empty($notifiche))
         <div class="col-sm-6 col-md-4">
           <div class='detail-box'>
-            <h4>Non hai ricevuto notifiche.</h4>
+            <h4 style="color:red;">Non hai ricevuto notifiche.</h4>
           </div>
         </div>
       @endif      

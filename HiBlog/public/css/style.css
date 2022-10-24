@@ -50,6 +50,19 @@ a {
 
 #motivazione{max-width:500px;max-height:150px;}
 
+#scritta-notifiche{
+    font-size:18px;
+    margin-left:5px;
+    margin-top:5px;
+    margin-right:5px;
+}
+
+#accrifamicizia{
+    font-size:20px;
+    margin-right:5px;
+    margin-left:5px;
+}
+
 #scritta-slider{
     margin-bottom:110px;
     color:white;
