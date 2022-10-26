@@ -19,7 +19,7 @@ use App\Models\Staff;
 use App\Models\Admin;
 use App\Http\Requests\NuovoStaffRequest;
 use App\Http\Requests\MotivazioneCancRequest;
-
+use App\Http\Requests\MotivazioneCancRequest2;
 
 class AdminController extends Controller {
 
@@ -96,7 +96,7 @@ class AdminController extends Controller {
         
     }
  
-    public function DeletePost(Request $request){
+    public function DeletePost(MotivazioneCancRequest2 $request){
          $IdPost = $request->PostId;
         $motivo = $request->motivazione;
         $query2 =  "select * from post where PostId = '$IdPost' ";

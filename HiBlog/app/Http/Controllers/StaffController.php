@@ -17,7 +17,7 @@ use Hamcrest\Text\StringContainsIgnoringCase;
 use App\Http\Requests\RicercaAmicoRequest;
 use App\Models\Staff;
 use App\Http\Requests\MotivazioneCancRequest;
-
+use App\Http\Requests\MotivazioneCancRequest2;
 
 class StaffController extends Controller
 {
@@ -95,7 +95,7 @@ class StaffController extends Controller
         
     }
  
-    public function DeletePost(Request $request){
+    public function DeletePost(MotivazioneCancRequest2 $request){
         $IdPost = $request->PostId;
         $motivo = $request->motivazione;
         $query2 =  "select * from post where PostId = '$IdPost' ";
