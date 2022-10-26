@@ -70,7 +70,7 @@ protected function validator(array $data)
             'datanascita' => ['required','date','before:today'],
             'telefono' => ['required', 'numeric', 'digits_between:8,11'],
             'role' => ['required','string'],
-  
+            'RichiesteRicevute'=>['required'],
         ]);
     }
 
@@ -92,8 +92,7 @@ protected function validator(array $data)
             'telefono' => $data['telefono'],
             'genere'=> $data['genere'],
             'role' => $data['role'],
-            
-            
+            'visibile'=>"si",
         ]);
     }
     

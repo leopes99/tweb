@@ -197,7 +197,9 @@
                     
                   </center>
                 <div style="display:none;">
-                    {{Form::select('role',['utente'=>'Utente'])}}</div>
+                    {{Form::select('role',['utente'=>'Utente'])}}
+                {{Form::select('RichiesteRicevute',['RichiesteRicevute'=>0])}}
+                </div>
                   <center>
                         {{ Form::submit('Registra', ['class' => 'form-btn1', 'id'=>"pulsante"]) }}
                   </center>
