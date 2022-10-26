@@ -206,9 +206,10 @@ class userController extends Controller {
     }
     
     public function OpenBlog(Request $request) {
+        
         $query = "select * from blog where BlogId='".$request->BlogId."'";
         $Blog = DB::select($query);
-        
+        if(empty($Blog)){return view('Inesistente');}
         $IdBlog = $request->BlogId;
         
         

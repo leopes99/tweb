@@ -46,6 +46,7 @@
                         @yield('Stats')
                         @yield('ProfileStats')
                         @yield('ListOfFriendsBlogs')
+                        @yield('error')
                     </div>                
             </div>
            
