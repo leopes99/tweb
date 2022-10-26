@@ -13,14 +13,17 @@
     <h4>In questa sezione puoi visualizzare delle statistiche inerenti ad HiBlog! Utilizzando l' apposita barra di
     ricerca è possibile cercare un utente per visualizzarne la propria lista degli amici e il numero di amicizie accettate
     o rifiutate da esso.</h4><br>
+    @if(!empty($numero_blog))
     <h2 id='scritta-h2' style="color:blue">Numero totale dei blog presenti nel sito: <b>{{$numero_blog}}</b></h2>
-   
+   @else
+   <h2 id='scritta-h2' style="color:blue">Numero totale dei blog presenti nel sito: <b>0</b></h2>
+    @endif
     
     <hr id='blog-riga'><br>
     <h3>Ricerca utenti: digita un nome e/o un cognome, mentre per la ricerca parziale utilizza * .</h3><br>
     <center>
         {{ Form::open(array('route' => 'ricercaStat', 'class' => 'contact-form')) }}
-            {{ Form::text('cercaAmici', '', ['class' => 'barraricerca', 'id' => 'cercaAmici', 'placeholder'=>'Nome e/o Cognome' ]) }}
+            {{ Form::text('cercaAmici', '', ['class' => 'barraricerca', 'id' => 'cercaAmici', 'placeholder'=>'Nome e/o Cognome','required' ]) }}
                     
                     @if ($errors->first('cercaAmici'))
                     <ul id="errore">

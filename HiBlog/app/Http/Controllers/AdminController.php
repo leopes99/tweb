@@ -186,10 +186,12 @@ class AdminController extends Controller {
          
           $TuttiBlog = new Staff;
             $ListaBlogs=$TuttiBlog->getAllBlogs();
-            $numblog=count($ListaBlogs);
+            if(!empty($ListaBlogs))
+            {$numblog=count($ListaBlogs);
             
          
-        return view('admin/Stats' , [ 'numero_blog' => $numblog]);
+            return view('admin/Stats' , [ 'numero_blog' => $numblog]);}
+            else return view('admin/Stats' , [ 'numero_blog' => ""]);
         
     }
     
@@ -200,15 +202,7 @@ class AdminController extends Controller {
         $controllo1="**";$controllo2="***";$controllo3="****";
         if($params==$wildcard||$params==$controllo1||$params==$controllo2||$params==$controllo3){
             
-            $TuttiBlog = new Staff;
-            $ListaBlogs=$TuttiBlog->getAllBlogs();
-            $numblog=count($ListaBlogs);
-            
-        if (!empty($risultati))    
-            return view('admin/Stats' , [ 'numero_blog' => $numblog , 'utenti' => $risultati]);
-        else
-             return view('admin/Stats' , [ 'numero_blog' => $numblog , 'utenti' => ""]);
-            
+            return redirect()->route('viewStats');
         }
         
         //echo '<pre>'; print_r($test); echo '</pre>';
