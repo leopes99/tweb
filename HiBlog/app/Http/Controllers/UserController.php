@@ -100,6 +100,7 @@ class userController extends Controller {
     public function inviaRichiesta(Request $request) {
      $id_richiedente = Auth::user()->id;
      $id_ricevente = $request->id;
+    
      
      $query1="select id_richiedente_amicizia, id_ricevente_amicizia from amicizie";
      $amicizie = DB::select($query1);
@@ -115,6 +116,11 @@ class userController extends Controller {
      if($check==true){
         DB::insert('insert into amicizie (id_richiedente_amicizia, id_ricevente_amicizia, accettata) '
                 . 'values (?, ?, ?)', [$id_richiedente, $id_ricevente, 0]);
+     $a=$request->RichiesteRicevute;
+     $a+=1;
+     
+     $c="UPDATE `users` SET `RichiesteRicevute` = $a WHERE users.id=$id_ricevente";
+     DB::update($c);
         return back()->with('avviso', 'Richiesta inviata con successo!');
      }else{
         return back()->with('avviso', 'Hai già inviato una richiesta a questo utente!');}

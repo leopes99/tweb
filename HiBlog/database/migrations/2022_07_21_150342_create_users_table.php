@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('role',10);
+            $table->bigInteger('RichiesteRicevute')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
