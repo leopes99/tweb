@@ -196,7 +196,8 @@
                       </div>
                     
                   </center>
-                <p>Ti stai registrando come: </p> {{Form::select('role',['utente'=>'Utente'])}}
+                <div style="display:none;">
+                    {{Form::select('role',['utente'=>'Utente'])}}</div>
                   <center>
                         {{ Form::submit('Registra', ['class' => 'form-btn1', 'id'=>"pulsante"]) }}
                   </center>
