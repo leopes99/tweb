@@ -18,7 +18,7 @@ use App\Http\Requests\RicercaAmicoRequest;
 use App\Models\Staff;
 use App\Models\Admin;
 use App\Http\Requests\NuovoStaffRequest;
-
+use App\Http\Requests\MotivazioneCancRequest;
 
 
 class AdminController extends Controller {
@@ -48,7 +48,7 @@ class AdminController extends Controller {
         
     }
     
-     public function DeleteBlog(Request $request){
+     public function DeleteBlog(MotivazioneCancRequest $request){
         
        $IdBlog = $request->BlogId;
         

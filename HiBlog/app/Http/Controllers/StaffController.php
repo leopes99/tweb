@@ -16,6 +16,7 @@ use App\Http\Requests\NuovoPostRequest;
 use Hamcrest\Text\StringContainsIgnoringCase;
 use App\Http\Requests\RicercaAmicoRequest;
 use App\Models\Staff;
+use App\Http\Requests\MotivazioneCancRequest;
 
 
 class StaffController extends Controller
@@ -45,7 +46,7 @@ class StaffController extends Controller
         
     }
     
-     public function DeleteBlog(Request $request){
+     public function DeleteBlog(MotivazioneCancRequest $request){
         
         $IdBlog = $request->BlogId;
         

@@ -46,7 +46,7 @@
 
                                     {{ Form::text('BlogId', $blog[0]->BlogId, ['class' => 'input-post', 'id' => 'BlogId', 'style' => 'display:none']) }}
 
-                                    {{ Form::textarea('motivazioneBlog', '', ['class' => 'input-post', 'id' => 'motivazioneBlog', 'placeholder'=>"Inserisci una motivazione all'eliminazione del post"]) }}
+                                    {{ Form::textarea('motivazioneBlog', '', ['class' => 'input-post', 'id' => 'motivazioneBlog', 'placeholder'=>"Inserisci una motivazione all'eliminazione del blog" , 'required']) }}
                                     @if ($errors->first('motivazioneBlog'))
                                     <ul id="errore">
                                         @foreach ($errors->get('motivazioneBlog') as $message)
@@ -77,7 +77,7 @@
 
                                     {{ Form::text('BlogId', $blog[0]->BlogId, ['class' => 'input-post', 'id' => 'BlogId', 'style' => 'display:none']) }}
 
-                                    {{ Form::textarea('motivazioneBlog', '', ['class' => 'input-post', 'id' => 'motivazioneBlog', 'placeholder'=>"Inserisci una motivazione all'eliminazione del post"]) }}
+                                    {{ Form::textarea('motivazioneBlog', '', ['class' => 'input-post', 'id' => 'motivazioneBlog', 'placeholder'=>"Inserisci una motivazione all'eliminazione del blog", 'required']) }}
                                     @if ($errors->first('motivazioneBlog'))
                                     <ul id="errore">
                                         @foreach ($errors->get('motivazioneBlog') as $message)
