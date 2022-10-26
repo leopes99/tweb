@@ -21,7 +21,7 @@
     
      @if(!empty($numero_staff))
      <h2 id="scritta-h2"> Lista degli STAFF({{$numero_staff}}):</h2> <br>
-     @endif
+     
     
     
     @foreach($staffs as $staff)
@@ -44,7 +44,9 @@
     </div>
     <br>
     @endforeach
-    
+    @else
+    <center><h2 style="color:red">Non esistono utenti col ruolo di Staff presenti in questo sito.</h2></center>
+    @endif
    <br><br>
 </div>  
 

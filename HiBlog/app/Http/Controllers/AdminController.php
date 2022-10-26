@@ -178,7 +178,7 @@ class AdminController extends Controller {
          $admin->updateStaff($request);
         
        // echo '<pre>'; print_r($var); echo '</pre>';
-                return redirect()->route('viewGestUtenti');
+          return redirect()->route('viewGestUtenti');
        
     }
     

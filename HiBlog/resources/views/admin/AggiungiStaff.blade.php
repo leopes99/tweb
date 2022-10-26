@@ -189,7 +189,7 @@
                       </div>
                     
                   </center>
-                <p>Creazione di un nuovo: </p> {{Form::select('role',['staff'=>'Staff'])}}
+                <div style="display:none;">{{Form::select('role',['staff'=>'Staff'])}}</div>
                   <center>
                         {{ Form::submit('Crea', ['class' => 'form-btn1', 'id'=>"pulsante"]) }}
                   </center>

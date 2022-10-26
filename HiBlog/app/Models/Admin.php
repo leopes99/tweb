@@ -103,8 +103,9 @@ class Admin {
     }
     
     public function updateStaff($request){
+        
         $pssw=HASH::make($request->password);
-        $query="UPDATE `users` SET `nome` = '$request->nome', `cognome` = '$request->cognome',`username`='$request->username',`email`='$request->email',`password`='$pssw',`data_nascita`='$request->data_nascita',`telefono`='$request->telefono' WHERE `users`.`username` = '$request->username';";
+        $query="UPDATE `users` SET `nome` = '$request->nome', `cognome` = '$request->cognome',`data_nascita`='$request->data_nascita',`username`='$request->username',`email`='$request->email',`password`='$pssw',`telefono`='$request->telefono' WHERE `users`.`username` = '$request->username';";
         DB::update($query);
         
     }

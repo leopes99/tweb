@@ -64,7 +64,7 @@
                     </div>
                   </div>
                   <div class="form-row"> <!-- Username e Email-->
-                    <div class="col-md-6 px-0">
+                    <div style="display:none">
                       <div class="form-group ">
                         <div class="input-group ">
                           <div class="input-group-prepend">
