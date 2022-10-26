@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Gruppo 53">
+        <meta name="author" content="Gruppo 53 di tecnologie Web: Pescetti Leonardo e Montagnoli Filippo">
         <meta name="description" content="Sito di HiBlog">
         <meta name="keywords" content="social, amici, network, blog, chat">      
         <title>HiBlog | @yield('title','HomePage')</title>
