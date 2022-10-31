@@ -225,7 +225,7 @@ class AdminController extends Controller {
         $numeroBlog=$admin->countBlog($id);
         
         $admin2 = new Admin;
-        $elencoRichiesteAmicizia=$admin2->getRichiesteStats($id);
+        $numero_richieste=$admin2->getRichiesteStats($id);
         
         $admin2 = new Admin;
         $utente=$admin2->getUte($id);
@@ -234,41 +234,23 @@ class AdminController extends Controller {
         $amici=$utenti->getAmici($request);
        
         
-        if (!empty($numeroBlog) && !empty($elencoRichiesteAmicizia) && !empty($amici)){
-            $numero_richieste=count($elencoRichiesteAmicizia);
-            return view('admin/ProfileStats' , [ 'numero_blog' => $numeroBlog , 'numero_richieste' => $numero_richieste , 'utente'=>$utente , 'amici' => $amici]);   
-        }
+        if (!empty($numeroBlog) && !empty($amici)) {
+            return view('admin/ProfileStats', ['numero_blog' => $numeroBlog, 'numero_richieste' => $numero_richieste, 'utente' => $utente, 'amici' => $amici]);
+                    
+        } else if (empty($numeroBlog) && !empty($amici)) {
+            return view('admin/ProfileStats', ['numero_blog' => "", 'numero_richieste' => $numero_richieste, 'utente' => $utente, 'amici' => $amici]);
+       
+        } else if (!empty($numeroBlog) && empty($amici)) {
+            return view('admin/ProfileStats', ['numero_blog' => $numeroBlog, 'numero_richieste' => $numero_richieste, 'utente' => $utente, 'amici' => $amici]);
+       
+        } else if (empty($numeroBlog) && empty($amici)) {
+            return view('admin/ProfileStats', ['numero_blog' => "", 'numero_richieste' => $numero_richieste, 'utente' => $utente, 'amici' => ""]);
         
-        else if(empty($numeroBlog) && !empty($elencoRichiesteAmicizia) && !empty($amici)){
-            $numero_richieste=count($elencoRichiesteAmicizia);
-            return view('admin/ProfileStats' , [ 'numero_blog' => "" , 'numero_richieste' => $numero_richieste  , 'utente'=>$utente , 'amici' => $amici]);   
-        }
-        
-        else if(!empty($numeroBlog) && empty($elencoRichiesteAmicizia) && !empty($amici)){
-            return view('admin/ProfileStats' , [ 'numero_blog' => $numeroBlog , 'numero_richieste' => "" , 'utente'=>$utente, 'amici' => $amici]);
-        }    
-        
-        else if (!empty($numeroBlog) && !empty($elencoRichiesteAmicizia) && empty($amici)){
-            $numero_richieste=count($elencoRichiesteAmicizia);
-            return view('admin/ProfileStats' , [ 'numero_blog' => $numeroBlog , 'numero_richieste' => $numero_richieste , 'utente'=>$utente , 'amici' => $amici]);   
-        }
-        
-        else if (empty($numeroBlog) && empty($elencoRichiesteAmicizia) && !empty($amici)){
             
-            return view('admin/ProfileStats' , [ 'numero_blog' => "" , 'numero_richieste' => "" , 'utente'=>$utente , 'amici' => $amici]);   
-        }
-        
-        else if (empty($numeroBlog) && !empty($elencoRichiesteAmicizia) && empty($amici)){
-            $numero_richieste=count($elencoRichiesteAmicizia);
-            return view('admin/ProfileStats' , [ 'numero_blog' => "" , 'numero_richieste' => $numero_richieste , 'utente'=>$utente , 'amici' => ""]);   
-        }
-        else if (!empty($numeroBlog) && empty($elencoRichiesteAmicizia) && empty($amici)){
-            
-            return view('admin/ProfileStats' , [ 'numero_blog' =>$numeroBlog , 'numero_richieste' => "" , 'utente'=>$utente , 'amici' => ""]);   
-        }
-        else return view('admin/ProfileStats' , [ 'numero_blog' =>"" , 'numero_richieste' => "" , 'utente'=>$utente , 'amici' => ""]);   
+        } else
+            return view('admin/ProfileStats', ['numero_blog' => "", 'numero_richieste' => "", 'utente' => $utente, 'amici' => ""]);
     }
-        
+
 }
             
     

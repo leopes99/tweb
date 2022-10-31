@@ -123,18 +123,12 @@ class Admin {
     } 
     
     public function getRichiesteStats($id){
-        $query="SELECT * FROM amicizie";
-        $Amicizie=DB::SELECT($query);
-        
-        foreach($Amicizie as $amicizia){
-            if( $amicizia->id_ricevente_amicizia=$id=$id ){
-                $query2="SELECT * FROM amicizie WHERE amicizie.id_ricevente_amicizia=$id";
-                $Amicizie2=DB::SELECT($query2);
-            }
-            
-        }
-        
-        return $Amicizie2;
+       
+        $query="SELECT RichiesteRicevute FROM users where users.id=$id";
+        $a=DB::SELECT($query);
+        $b=$a[0]->RichiesteRicevute;
+       
+        return $b;  
     }
     
     public function getUte($id){

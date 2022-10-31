@@ -119,7 +119,7 @@ class userController extends Controller {
      $richieste = DB::select($query2);
      $a = $richieste[0]->RichiesteRicevute;
      $a+=1;
-     echo '<pre>'; print_r($a); echo '</pre>';
+     //echo '<pre>'; print_r($a); echo '</pre>';
      $c="UPDATE `users` SET `RichiesteRicevute` = $a WHERE users.id=$id_ricevente";
      DB::update($c);
      
