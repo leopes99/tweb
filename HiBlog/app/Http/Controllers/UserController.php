@@ -44,7 +44,7 @@ class userController extends Controller {
         return redirect()->action('UserController@index');
         }else{
         return back()->with('errore', 'Password errata!');}
-            
+            #ciao
     }   
     
     public function viewAmici(Request $request) {
