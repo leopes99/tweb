@@ -47,12 +47,12 @@ class Blogs extends Model
         if ($request->immagine == null) {
             $query = "INSERT INTO blog ( `user_id`, `nomeblog`, `tema`, `descrizione`, `immagine`) VALUES ( $idUtente, '$request->nomeblog', '$request->tema', '$request->descrizione', 'DefaultBlog.png');";
         } else {
-            if ($request->hasFile('immagine')) {
-                $image = $request->file('immagine');
-                $imageName = $image->getClientOriginalName();
+            if ($request->hasFile('immagine')) { //se c'è l immagine
+                $image = $request->file('immagine'); //passo il file dlel'immagine creata
+                $imageName = $image->getClientOriginalName(); //ad imagename gli passo 
                 
             } else {
-                $imageName = NULL;
+                $imageName = NULL; //nel caso in cui gli ho passato un file che non c entra nulla, setto null ad imagename
             }if (!is_null($imageName)) {
                 $destinationPath = public_path() . '/images';
                 $image->move($destinationPath, $imageName);

@@ -35,7 +35,11 @@ class userController extends Controller {
        $utente = User::find(Auth::user()->id); 
        if(Hash::check($request->password_attuale, $utente->password)){
         $result = collect(request()->all())->filter(function($request){
+            //collect raccoglie tutto quello che sta in request
+            //filter va a mettere tutti i dati raccolti in result
             return is_string($request)&&!empty($request)||is_array($request)&&count($request);
+            //is string controlla che le cose passate siano una stringa e che non sia vuota
+            //OPPURE che sia un array
         });
         
         $user=Auth::user();        
@@ -104,11 +108,11 @@ class userController extends Controller {
      $query1="select id_richiedente_amicizia, id_ricevente_amicizia from amicizie";
      $amicizie = DB::select($query1);
      $check = true;
-     foreach($amicizie as $amicizia){
+     foreach($amicizie as $amicizia){ //questo foreach controlla che non siano gia amici o che non sia gia stata inviata
          if($amicizia->id_richiedente_amicizia == $id_richiedente){
              if($amicizia->id_ricevente_amicizia == $id_ricevente){
                  $check = false;
-                 #echo '<pre>'; print_r($check); echo '</pre>';
+                 //se false, vuol dire che sono gia amici o che gliel ho gia mandata
              }
          }
      }
@@ -116,7 +120,7 @@ class userController extends Controller {
         DB::insert('insert into amicizie (id_richiedente_amicizia, id_ricevente_amicizia, accettata) '
                 . 'values (?, ?, ?)', [$id_richiedente, $id_ricevente, 0]);
      $query2="select RichiesteRicevute from users where id = $id_ricevente";
-     $richieste = DB::select($query2);
+     $richieste = DB::select($query2); //mi salvo il numero richieste ricevute per l'admin
      $a = $richieste[0]->RichiesteRicevute;
      $a+=1;
      //echo '<pre>'; print_r($a); echo '</pre>';
@@ -132,6 +136,7 @@ class userController extends Controller {
     
     public function viewNotifiche() {
         $id = Auth::user()->id;
+        //questa parte riguarda le RICHIESTE DI AMICIZIA
         $query = "select * from amicizie where accettata='0' ";
         $richieste = DB::select($query);
         
@@ -141,8 +146,9 @@ class userController extends Controller {
               $richiesteRicevute = DB::select($query2);
             } 
           } 
-          
+          //questa query riguarda la notifica RIMOZIONE AMICO
         $query3 = "SELECT * FROM notifiche INNER JOIN users ON notifiche.id_mittente = users.id WHERE id_destinatario = $id AND tipologia_notifica = 'RimozioneAmico'";
+        //Questa query rigurda tutte le altre notifiche(rimozione post, rimozione blog,creazione post di un blog di un amico
         $query4 = "SELECT * FROM notifiche WHERE id_destinatario = $id";
         $notificheRimAmico = DB::select($query3);
         $notifiche= DB::select($query4);
@@ -258,14 +264,6 @@ class userController extends Controller {
          $blog = new Blogs;
         $blog->Create_Blog($idUtente,$request);
         
-        
-       //  $blog2 = new Blogs;
-       // $mieiBlog=$blog2->getBlogs($utente);
-       //  $numero_blog = count($mieiBlog);
-            
-          
-         //return view('BlogIndex', ['blogMiei' => $mieiBlog, 'numero_blog'=>$numero_blog]);
-          //return redirect()->route('BlogIndex');
            return redirect()->action('UserController@viewblogS');
     }
     
@@ -277,7 +275,7 @@ class userController extends Controller {
         
         $post = new Posts;
         $post->CreatePost($request);
-        
+         //da qua in poi creo la notifica di creazione post
         $query = "select * from blog where BlogId='".$request->BlogId."'";
         $Blog = DB::select($query);
         
