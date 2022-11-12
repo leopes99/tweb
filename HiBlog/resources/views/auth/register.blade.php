@@ -202,6 +202,7 @@
                 </div>
                   <center>
                         {{ Form::submit('Registra', ['class' => 'form-btn1', 'id'=>"pulsante"]) }}
+                        <!--Dal momemnto che premo il tasto di submit, attivo la rotta post di register -->
                   </center>
                 {{ Form::close() }}
                 <p>Possiedi già un'account? <a href="{{route('login')}}">Accedi qui</a>.</p>

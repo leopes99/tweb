@@ -7,8 +7,10 @@
       
       <!-- banner -->
       <div id="myCarousel" class="carousel slide banner_main" data-ride="carousel">
-         <ol class="carousel-indicators">
+          <ol class="carousel-indicators"> <!-- il carosello è un metodo di bootstrap. -->
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <!-- data-targer è il nome che andiamo poi a richiamare su custom.js. Setto il primo elemento active -->
+            <!-- che andrò poi a richiamare nel primo pezzo dello slider -->
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
          </ol>

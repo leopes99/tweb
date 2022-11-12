@@ -17,18 +17,19 @@
  Route::get('/','PublicController@viewHome' ) -> name('homelvl1');
  
  Route::get('login', 'Auth\LoginController@showLoginForm') ->name('login');
- 
+ //apre la form di login che si trova nella vista auth/login.blade.php
  Route::post('login', 'Auth\LoginController@login');
  
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register'); 
- 
+  //apre la form di registrazione che si trova nella vista auth/register.blade.php
   Route::post('register', 'Auth\RegisterController@register');
- 
+ //vengono attivate le funzioni che sono nel RegisterController
   Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
 
   //download della documentazione
   Route::get('/download', function () {
     return response()->download('doc/Documentazione_progetto.pdf');
+    //ritorno un'istanza di tipo response che mi fa partire il download di quel documento.
   })->name('download');
 
  // ROUTES In comune tra utenti loggati

@@ -27,6 +27,7 @@
                                                         <div class="d-flex align-items-center justify-content-between">
                                                             <h3 class="h2 mr-auto">Ciao {{Auth::user()->username}} !</h3>
                                                                     @can('isUtente')<a href="{{ route('profileEdit') }}" id="PulsanteModProf">&nbsp;Modifica il profilo</a>@endcan
+                                                                    <!-- Solo l'utente di livello 2 può modificare il profilo, quindi solo lui può vedere questo tasto-->
                                                         </div><br>
                                                         <div class="account-info">
                                                             <div class="row py-2">

@@ -14,6 +14,6 @@ $(function () {
 	$('#myCarousel').carousel({
 		interval: 2000
 	});
-
+        //usando .carousel andiamo a settare l'intervallo dello slider.
 
 });

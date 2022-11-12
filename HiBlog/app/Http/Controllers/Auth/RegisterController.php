@@ -41,6 +41,7 @@ class RegisterController extends Controller
                 break;
             default: return '/';
         };
+        //in base al tipo di utente che abbiamo creato, veniamo reinderizzati nella pagina di profilo associata
     }
 
     /**
@@ -72,6 +73,7 @@ protected function validator(array $data)
             'role' => ['required','string'],
             'RichiesteRicevute'=>['required'],
         ]);
+        //validator della form(come le request), controlla i dati immessi
     }
 
     /**
@@ -93,6 +95,8 @@ protected function validator(array $data)
             'genere'=> $data['genere'],
             'role' => $data['role'],
             'visibile'=>"si",
+            //creazione vera e propria dell'utente: viene creato l'utente nel database inserendoci i dati immessi nella form
+            //mentre l'unico dato settato di default è la visibilità che è impostata con "si"
         ]);
     }
     
