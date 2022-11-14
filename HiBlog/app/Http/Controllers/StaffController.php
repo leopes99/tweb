@@ -50,6 +50,7 @@ class StaffController extends Controller
         
         $IdBlog = $request->BlogId;
         
+        //da qua in poi mi prendo delle info per la creazione della notifica
         $motivo = $request->motivazioneBlog;
         $query2 =  "select * from blog where BlogId = '$IdBlog' ";
         $blogEliminato = DB::select($query2);
